@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wtlib.base.dao.BookBaseMapper" >
+  <resultMap id="BookBaseMap" type="com.wtlib.base.pojo.BookBase" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="book_title" property="bookTitle" jdbcType="VARCHAR" />
+    <result column="book_cover_url" property="bookCoverUrl" jdbcType="VARCHAR" />
+    <result column="book_desc" property="bookDesc" jdbcType="VARCHAR" />
+    <result column="book_writer" property="bookWriter" jdbcType="VARCHAR" />
+    <result column="book_publisher" property="bookPublisher" jdbcType="VARCHAR" />
+    <result column="book_page_num" property="bookPageNum" jdbcType="INTEGER" />
+    <result column="book_price" property="bookPrice" jdbcType="DECIMAL" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="book_num" property="bookNum" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reviser" property="reviser" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="comList" >
+    id, book_title, book_cover_url, book_desc, book_writer, book_publisher, book_page_num, 
+    book_price, creator, book_num, create_time, reviser, update_time, 
+    data_status
+  </sql>
+  <select id="selectById" resultMap="BookBaseMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="comList" />
+    from t_book_base
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+  
+  </delete>
+  
+  <insert id="insert" parameterType="com.wtlib.base.pojo.BookBase" >
+    insert into t_book_base
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+     
+      <if test="bookTitle != null" >
+        book_title,
+      </if>
+      <if test="bookCoverUrl != null" >
+        book_cover_url,
+      </if>
+      <if test="bookDesc != null" >
+        book_desc,
+      </if>
+      <if test="bookWriter != null" >
+        book_writer,
+      </if>
+      <if test="bookPublisher != null" >
+        book_publisher,
+      </if>
+      <if test="bookPageNum != null" >
+        book_page_num,
+      </if>
+      <if test="bookPrice != null" >
+        book_price,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="bookNum != null" >
+        book_num,
+      </if>
+      <if test="reviser != null" >
+        reviser,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+        create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      
+      <if test="bookTitle != null" >
+        #{bookTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bookCoverUrl != null" >
+        #{bookCoverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bookDesc != null" >
+        #{bookDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bookWriter != null" >
+        #{bookWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublisher != null" >
+        #{bookPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPageNum != null" >
+        #{bookPageNum,jdbcType=INTEGER},
+      </if>
+      <if test="bookPrice != null" >
+        #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="bookNum != null" >
+        #{bookNum,jdbcType=INTEGER},
+      </if>
+      <if test="reviser != null" >
+        #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      now()
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.wtlib.base.pojo.BookBase" >
+    update t_book_base
+    <set >
+      <if test="bookTitle != null" >
+        book_title = #{bookTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bookCoverUrl != null" >
+        book_cover_url = #{bookCoverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bookDesc != null" >
+        book_desc = #{bookDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="bookWriter != null" >
+        book_writer = #{bookWriter,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPublisher != null" >
+        book_publisher = #{bookPublisher,jdbcType=VARCHAR},
+      </if>
+      <if test="bookPageNum != null" >
+        book_page_num = #{bookPageNum,jdbcType=INTEGER},
+      </if>
+      <if test="bookPrice != null" >
+        book_price = #{bookPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="bookNum != null" >
+        book_num = #{bookNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=CHAR},
+      </if>
+        reviser = now()
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

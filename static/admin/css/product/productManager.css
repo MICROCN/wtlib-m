@@ -1,0 +1,239 @@
+﻿/*文本框样式*/
+input[type=text]{
+  border:1px solid rgb(154, 43, 44);
+  background-color:rgba(221, 218, 218,0.13);
+  box-shadow: 0px 1px 1px #b19b9b;
+  height:25px;
+  font-size:13px;
+}
+input[type=text]:focus{
+  border:1px solid rgb(154, 43, 44);
+  background-color:rgba(221, 218, 218,0.03);
+  box-shadow: 0px 0px 0px #b19b9b;
+  height:25px;
+  font-size:13px;
+}
+/*按钮样式*/
+ input[type=button]{
+  border:0px;
+  height:25px;
+  color:white;
+  font-size:12px;	
+  margin-bottom:3px;
+  box-shadow: 1px 1px 2px #b19b9b;
+  border-radius: 2px;
+  background-color:rgb(233, 35, 35);
+   background-color:rgb(154, 43, 44);
+  }
+
+ input[type=button]:hover{
+		font-weight:bold;
+		background-color:#ec8f8f;
+		box-shadow: 0px 1px 1px #b19b9b;
+		cursor:pointer;
+	}
+ input[type=button]:active{
+		font-weight:bold;	
+		background-color:rgb(243, 166, 166);
+		box-shadow: 0px 0px 0px #b19b9b;
+		cursor:pointer;
+	}
+	  
+ input[type=button]:disabled{
+		background-color:rgba(128, 128, 128, 0.62);	
+ }
+ 
+ input[type=checkbox]{
+	float:left;
+	height:40px;
+	margin:0px;
+}
+/*图片列表的样式*/ 
+.imgDisplay {
+  	 font-size:12px;
+	 margin:15px 0px 0px 5px;
+}
+.imgDisplay li {
+     display: inline-block;
+  	 text-align:center;
+	 height:100px;
+}
+.imgDisplay a{
+	width:50px;
+	height:50px;
+	display:block;
+}
+/*图片覆盖样式*/
+.cover{
+	width:50px;
+	height:50px;
+	display:block;
+	position:absolute;
+	background-color:rgba(0, 0, 0, 0.09);
+	z-index:1; 
+	bottom: 40px;
+	left: 18px;
+}
+.cover:hover{
+	cursor:pointer;
+}
+.imgDisplay img{
+	width:50px;
+	height:50px;
+}
+.imgDisplay img:hover{
+	cursor:pointer;
+}
+/*放上去自动获得焦点*/
+.toSetInput{
+	width:100px;
+	text-align:center;
+	color:gray;
+	readonly:expression(this.readOnly=true);
+}
+
+.toSetInput:hover{
+	color:black;
+}
+.toSetInput:focus{
+	color:black;
+}
+/*搜索span的样式*/
+.autoSearch{
+	position:relative;
+	display:inline-block;
+	width:150px;
+}
+.autoSearch div{
+	border:1px solid red;
+	border-top:0px ;
+	background-color:white;
+	overflow: hidden;
+	display:block;
+	position:absolute;
+	z-index:2; 
+	top:25px; 
+	left:0;
+	width:100%;
+	height:120px;
+	text-align:center;
+	box-shadow: 1px 1px 2px #b19b9b;
+}
+.autoSearch div:hover{
+	box-shadow: 0px 0px 0px #b19b9b;
+}
+span[name='pBrandNames']{
+	width:100%;
+	height:40px;
+	line-height:20px;
+}
+span[name='pBrandNames']:hover{
+	background-color:rgba(89, 117, 213, 0.58);
+	cursor:pointer;
+}
+/*操作按钮样式类*/
+.operation{
+	height:50px;
+	width:100px;
+	margin-right:150px;
+	font-size:20px;
+	border:1px;
+}
+.operation:hover{
+	background-color:#e6d6d6;	
+	font-weight:bold;
+}
+.operation:active{
+	background-color:#daa993;
+	
+}
+.operation:disabled{
+	background-color:gray;
+}
+
+/*div的首部样式*/
+.headBar{
+	margin: 5px 0.5% 5px 0.5%;
+	display:inline-block;
+	width:99%;
+}
+.headBar span {
+	width:98%;
+	display:inline-block;
+}
+/*搜索样式*/
+.headBar .searchText{
+	float:left
+	
+}
+.headBar .searchButton{
+	width:15%;height:25px;
+	border-radius: 0px;
+	float:left	
+}
+/*div的尾部样式*/
+.footBar{
+	border-top:2px solid gray;
+	height:9%;
+ }
+.footBar>input{
+	margin:10px 15px 0px 0px ;
+	float:right;
+	font-size:11px;
+}
+/*分页控件div样式*/
+.pageNation{
+	position: absolute; 
+	bottom: 0px; 
+	width: 100%; 
+	text-align: center; 
+	height: 40px; 
+}
+.page_link_list_font7{	
+	display: block;
+	width: 95%; 
+	margin: 5px auto;
+}
+.page_link_list_font7>div{	
+	display: block;
+	width: 100%; 
+	margin: 5px auto;
+	text-align:center;
+}
+/*设置表格的样式*/
+.list{
+	width:100%;
+	font-size:13px;
+  }
+.list tr{
+  }
+.list td{
+	text-align:center;
+	font-size:12px;
+    border-bottom:1px dashed gray;
+  }
+.list td div{
+  	text-align:center;
+	font-size:12px;
+  }
+/*表格头样式*/
+.list_head{
+	background-color:rgb(154, 43, 44);
+	color:white;
+	font-size:14px;
+	height:40px;
+}
+.list_head  td{
+	border-top:1px solid black;
+	border-bottom:1px dashed gray;
+}
+.list img{
+  	float:left;
+	width:40px;
+	margin-left:10px;
+  }
+/*被选中的样式*/
+.choosed{
+	background-color: rgba(198, 198, 198, 0.24);
+	font-weight:bold;
+ }

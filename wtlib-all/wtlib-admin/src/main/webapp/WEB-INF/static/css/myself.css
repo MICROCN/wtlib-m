@@ -1,0 +1,175 @@
+body{
+    background-color:#eeeeee;
+    background-size: cover;
+}
+.container{
+    width:100%;
+}
+.header{
+    height:40px;
+    width:100%;
+    background-color:#52c1d0;
+    position:fixed;
+    z-index:1;
+    box-shadow:0 0 4px rgba(0,0,0,0.3)
+}
+.main{
+    background-color:white;
+    width:100%;
+}
+.active{
+    color:green;
+}
+.row{
+    margin: 0 auto;
+}
+
+.content{
+    padding-top:40px;
+    /*display:none;*/
+}
+.footer{
+    height:50px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    opacity:0.7;
+    text-align:center;
+    background-color: white;
+}
+.footer ul li{
+    float:left;
+    width:33%;
+    line-height: 50px;
+    padding-top:10px;
+}
+.text-center{
+    text-align:center;
+    line-height:40px;
+    color:white;
+    font-size:17px;
+}
+.row{
+    margin: 0 auto;
+    background-color:white;
+    -moz-box-shadow:2px 2px 5px #333333;
+    -webkit-box-shadow:2px 2px 5px #333333;
+    box-shadow:0 1px 4px rgba(0,0,0,0.4);
+    padding:0 0 0 0;
+}
+.photo{
+    border-radius:100px;
+    margin:10px 0 0 0;
+}
+.user{
+    padding-top:30px;
+}
+.info{
+    margin-top:30px;
+}
+.task {
+    padding:15px;
+    color:#ff8f29;
+}
+.info-task{
+    height:45px;
+    line-height:45px;
+    overflow:hidden;
+    position:relative;
+}
+.text-right{
+    color:#a7a7a7;
+    position:absolute;
+    right:10px;
+}
+.management{
+    display: none;
+}
+.upload {
+    padding:50px 0 10px 0;
+}
+.upload-file{
+    padding:10px;
+    width:80px;
+    height:80px;
+    margin:0 auto;
+    border:1px dashed #eeeeee
+}
+.upload-photo{
+    font-size:30px;
+    padding:15px;
+    color:#808080;
+}
+.control-label{
+    line-height:34px;
+    text-align:right;
+}
+.size95{
+    width:95%;
+    margin:0 auto;
+    text-align: center;
+}
+.book{
+    background-color:white;
+    -moz-box-shadow:2px 2px 5px #333333;
+    -webkit-box-shadow:2px 2px 5px #333333;
+    box-shadow:0 1px 4px rgba(0,0,0,0.4);
+}
+.text-header{
+    padding-top:35px;
+}
+.history{
+    padding-top:40px;
+    display: none;
+}
+.order{
+    padding-top:40px;
+    display: none;
+}
+.back{
+    padding-top:40px;
+    text-align: right;
+    display:none;
+}
+.book img{
+    margin-top:10px;
+}
+.info-task:hover{
+    background-color: #808080;
+}
+#trash,#return{
+    display:none;
+}
+.box{
+    margin-top:40px;
+}
+.red{
+    color:red;
+}
+.settings{
+    padding-top:40px;
+    text-align: right;
+    display:none;
+}
+.text-left{
+    color:#a7a7a7;
+    position:absolute;
+    left:10px;
+}
+.left{
+    float:left;
+    margin:10px;
+}
+.right{
+    float:right;
+    margin:10px;
+}
+.setting-photo{
+    height:80px;
+    line-height:80px;
+    overflow:hidden;
+    position:relative;
+}
+.author{
+    text-align:center;
+}

@@ -1,0 +1,26 @@
+#first, #second, #third,#four,#five{
+                width:18%;
+                height:80%;
+                border:1px #333 solid;
+                margin:5px;
+                float:left;
+        }
+        /*.datagrid-header{
+                position:absolute;
+                visibility:hidden;
+        }*/
+		
+		
+#div0
+{
+  float:left; width:100%; height:100%;
+}
+#flowSk2 
+{
+  float:left;  width:50%; height:100%;
+}
+#flowProduct 
+{
+   float:right;  width:50%; height:100%;
+
+}

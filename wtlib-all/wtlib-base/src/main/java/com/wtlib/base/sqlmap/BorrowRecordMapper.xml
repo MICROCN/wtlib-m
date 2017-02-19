@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wtlib.base.dao.BorrowRecordMapper" >
+  <resultMap id="BorrowRecordMap" type="com.wtlib.base.pojo.BorrowRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="book_id" property="bookId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="borrow_status" property="borrowStatus" jdbcType="CHAR" />
+    <result column="borrow_dead_line" property="borrowDeadLine" jdbcType="TIMESTAMP" />
+    <result column="return_time" property="returnTime" jdbcType="TIMESTAMP" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reviser" property="reviser" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="comList" >
+    id, book_id, user_id, borrow_status, borrow_dead_line, return_time, creator, create_time, 
+    reviser, update_time, data_status
+  </sql>
+  <select id="selectById" resultMap="BorrowRecordMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="comList" />
+    from t_borrow_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    
+  </delete>
+ 
+  <insert id="insert" parameterType="com.wtlib.base.pojo.BorrowRecord" >
+    insert into t_borrow_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bookId != null" >
+        book_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="borrowStatus != null" >
+        borrow_status,
+      </if>
+      <if test="borrowDeadLine != null" >
+        borrow_dead_line,
+      </if>
+      <if test="returnTime != null" >
+        return_time,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="reviser != null" >
+        reviser,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+        create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bookId != null" >
+        #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="borrowStatus != null" >
+        #{borrowStatus,jdbcType=CHAR},
+      </if>
+      <if test="borrowDeadLine != null" >
+        #{borrowDeadLine,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnTime != null" >
+        #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="reviser != null" >
+        #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=CHAR},
+      </if>
+      now()
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.wtlib.base.pojo.BorrowRecord" >
+    update t_borrow_record
+    <set >
+      <if test="bookId != null" >
+        book_id = #{bookId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="borrowStatus != null" >
+        borrow_status = #{borrowStatus,jdbcType=CHAR},
+      </if>
+      <if test="borrowDeadLine != null" >
+        borrow_dead_line = #{borrowDeadLine,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returnTime != null" >
+        return_time = #{returnTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null" >
+        reviser = #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=CHAR},
+      </if>
+        update_time = now()
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+</mapper>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wtlib.base.dao.CreditRecordMapper" >
+  <resultMap id="CreditRecordMap" type="com.wtlib.base.pojo.CreditRecord" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="credit_info_id" property="creditInfoId" jdbcType="INTEGER" />
+    <result column="credit_is_plus" property="creditIsPlus" jdbcType="INTEGER" />
+    <result column="credit_name" property="creditName" jdbcType="VARCHAR" />
+    <result column="credit_before_value" property="creditBeforeValue" jdbcType="INTEGER" />
+    <result column="credit_value" property="creditValue" jdbcType="INTEGER" />
+    <result column="credit_after_value" property="creditAfterValue" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reviser" property="reviser" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="comList" >
+    id, user_id, credit_info_id, credit_is_plus, credit_name, credit_before_value, credit_value, 
+    credit_after_value, creator, create_time, reviser, update_time, data_status
+  </sql>
+  <select id="selectById" resultMap="CreditRecordMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="comList" />
+    from t_credit_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from t_credit_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+ 
+  <insert id="insert" parameterType="com.wtlib.base.pojo.CreditRecord" >
+    insert into t_credit_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+     
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="creditInfoId != null" >
+        credit_info_id,
+      </if>
+      <if test="creditIsPlus != null" >
+        credit_is_plus,
+      </if>
+      <if test="creditName != null" >
+        credit_name,
+      </if>
+      <if test="creditBeforeValue != null" >
+        credit_before_value,
+      </if>
+      <if test="creditValue != null" >
+        credit_value,
+      </if>
+      <if test="creditAfterValue != null" >
+        credit_after_value,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="reviser != null" >
+        reviser,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+        create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+     
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creditInfoId != null" >
+        #{creditInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="creditIsPlus != null" >
+        #{creditIsPlus,jdbcType=INTEGER},
+      </if>
+      <if test="creditName != null" >
+        #{creditName,jdbcType=VARCHAR},
+      </if>
+      <if test="creditBeforeValue != null" >
+        #{creditBeforeValue,jdbcType=INTEGER},
+      </if>
+      <if test="creditValue != null" >
+        #{creditValue,jdbcType=INTEGER},
+      </if>
+      <if test="creditAfterValue != null" >
+        #{creditAfterValue,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="reviser != null" >
+        #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        #{dataStatus,jdbcType=VARCHAR},
+      </if>
+      now()
+    </trim>
+  </insert>
+  <update id="updateById" parameterType="com.wtlib.base.pojo.CreditRecord" >
+    update t_credit_record
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="creditInfoId != null" >
+        credit_info_id = #{creditInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="creditIsPlus != null" >
+        credit_is_plus = #{creditIsPlus,jdbcType=INTEGER},
+      </if>
+      <if test="creditName != null" >
+        credit_name = #{creditName,jdbcType=VARCHAR},
+      </if>
+      <if test="creditBeforeValue != null" >
+        credit_before_value = #{creditBeforeValue,jdbcType=INTEGER},
+      </if>
+      <if test="creditValue != null" >
+        credit_value = #{creditValue,jdbcType=INTEGER},
+      </if>
+      <if test="creditAfterValue != null" >
+        credit_after_value = #{creditAfterValue,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null" >
+        reviser = #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=VARCHAR},
+      </if>
+        update_time = now()
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+</mapper>

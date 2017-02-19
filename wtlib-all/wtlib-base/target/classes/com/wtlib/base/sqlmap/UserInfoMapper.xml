@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wtlib.base.dao.UserInfoMapper">
+
+	<resultMap id="UserInfoMap" type="com.wtlib.base.pojo.UserInfo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="user_id" property="userId" jdbcType="INTEGER" />
+		<result column="current_credit_level" property="currentCreditLevel"
+			jdbcType="CHAR" />
+		<result column="current_credit_value" property="currentCreditValue"
+			jdbcType="INTEGER" />
+		<result column="creator" property="creator" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="reviser" property="reviser" jdbcType="INTEGER" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="data_status" property="dataStatus" jdbcType="CHAR" />
+	</resultMap>
+	
+	<update id="deleteById" parameterType="java.lang.Integer">
+		UPDATE t_user_info,
+		 t_user
+		SET t_user_info.data_status = "000",
+		 t_user.data_status = "000"
+		WHERE
+			t_user_info.user_id = #{id}
+		AND t_user.id = t_user_info.user_id
+	</update>
+
+	<insert id="insert" parameterType="com.wtlib.base.pojo.UserInfo">
+		insert into t_user_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="currentCreditLevel != null">
+				current_credit_level,
+			</if>
+			<if test="currentCreditValue != null">
+				current_credit_value,
+			</if>
+			<if test="creator != null">
+				creator,
+			</if>
+			<if test="reviser != null">
+				reviser,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus == null">
+				data_status,
+			</if>
+			create_time
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="currentCreditLevel != null">
+				#{currentCreditLevel,jdbcType=CHAR},
+			</if>
+			<if test="currentCreditValue != null">
+				#{currentCreditValue,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				#{creator,jdbcType=INTEGER},
+			</if>
+			<if test="reviser != null">
+				#{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{001,jdbcType=CHAR},
+			</if>
+			now()
+		</trim>
+	</insert>
+	<update id="updateById" parameterType="com.wtlib.base.pojo.UserInfo">
+		update t_user_info
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=INTEGER},
+			</if>
+			<if test="currentCreditLevel != null">
+				current_credit_level =
+				#{currentCreditLevel,jdbcType=CHAR},
+			</if>
+			<if test="currentCreditValue != null">
+				current_credit_value =
+				#{currentCreditValue,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				creator = #{creator,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reviser != null">
+				reviser = #{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+			update_time = now()
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+  <select id="selectByUsername" parameterType="java.lang.String" resultType = "com.wtlib.base.dto.UserWebDto">
+	  SELECT
+		username,
+		login_id as loginId,
+		current_credit_value as currentCreditValue,
+		level_name as currentCreditLevel,
+		t_user.creator,
+		t_user.create_time as createTime,
+		t_user.reviser as reviser,
+		t_user.update_time as updateTime,
+		t_user.data_status as dataStatus
+	FROM
+		t_user,
+		t_user_info,
+		t_user_level
+	WHERE
+		username=#{username}
+	AND t_user.id = user_id
+	AND user_level_id = t_user_level.id;
+  </select>
+</mapper>

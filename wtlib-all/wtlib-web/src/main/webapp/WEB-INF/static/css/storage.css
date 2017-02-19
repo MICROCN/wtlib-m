@@ -1,0 +1,112 @@
+body{
+    background-color:#eeeeee;
+    background-size: cover;
+}
+input{
+    background-color: rgba(0, 0, 0, 0) !important;
+    border:0 !important;
+    border-bottom: 1px solid red !important;
+    box-shadow:inset 0 0 0 rgba(0,0,0,0) !important;
+    -webkit-box-shadow:inset 0 0 0 rgba(0,0,0,0) !important;
+}
+.container{
+    width:100%;
+}
+.header{
+    height:40px;
+    width:100%;
+    background-color:black;
+    position:fixed;
+    z-index:1;
+    box-shadow:0 0 4px rgba(0,0,0,0.3)
+}
+.main{
+    background-color:white;
+    width:100%;
+}
+.book{
+    background-color:white;
+    -moz-box-shadow:2px 2px 5px #333333;
+    -webkit-box-shadow:2px 2px 5px #333333;
+    box-shadow:0 1px 4px rgba(0,0,0,0.4);
+}
+.text-header{
+    padding-top:40px;
+}
+.text-content{
+    color: #808080;
+}
+.footer{
+    height:85px;
+    position:fixed;
+    bottom:0;
+    width:100%;
+    opacity:0.7;
+    text-align:center;
+}
+.loading{
+    height:36px;
+    font-size:18px;
+    text-align:center;
+    margin-bottom: 40px;
+    display: none;
+}
+.loading p,img{
+    display: inline-block;
+    margin:10px 0 10px 0;
+}
+.active{
+    color:green;
+}
+.text-left{
+    float:left;
+    color:white;
+    padding-top:10px;
+}
+.text-right{
+    float:right;
+    color:white;
+    padding-top:13px;
+}
+.row{
+    margin: 0 auto;
+}
+.check{
+    height:35px;
+    background-color: #e1e1e1;
+}
+.total,.confirm{
+    float:left;
+    line-height: 35px;
+}
+.total{
+    width:80%;
+    padding-left:20px;
+    text-align:left;
+}
+.confirm{
+    color:white;
+    width:20%;
+}
+.confirm p{
+    background-color:#d90a18;
+}
+.navigation{
+    background-color: white;
+    height:50px;
+}
+.navigation li{
+    float:left;
+    width:33%;
+    line-height: 50px;
+    padding-bottom:5px;
+}
+.box{
+    margin-top:40px;
+}
+.content{
+    padding-top:40px;
+}
+.book img{
+    margin-top:10px;
+}

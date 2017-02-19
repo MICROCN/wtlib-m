@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wtlib.base.dao.BookBaseSupportMapper">
+	<resultMap id="BaseBookSupportMap" type="com.wtlib.base.pojo.BookBaseSupport">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="book_id" property="bookId" jdbcType="INTEGER" />
+		<result column="is_reservate_able" property="isReservateAble"
+			jdbcType="CHAR" />
+		<result column="is_borrow_able" property="isBorrowAble"
+			jdbcType="CHAR" />
+		<result column="current_left_book_number" property="currentLeftBookNumber"
+			jdbcType="INTEGER" />
+		<result column="current_reservate_number" property="currentReservateNumber"
+			jdbcType="INTEGER" />
+		<result column="single_book_number" property="singleBookNumber"
+			jdbcType="INTEGER" />
+		<result column="creator" property="creator" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="reviser" property="reviser" jdbcType="INTEGER" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="data_status" property="dataStatus" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="comList">
+		id, book_id, is_reservate_able, is_borrow_able,
+		current_left_book_number,
+		current_reservate_number,
+		single_book_number,
+		creator, create_time, reviser, update_time, data_status
+	</sql>
+
+
+	<select id="selectById" resultMap="BaseBookSupportMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="comList" />
+		from t_book_base_support
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+
+	</delete>
+	<select id="selectBookBaseSupportByBookId" resultMap="BaseBookSupportMap">
+
+		select
+		<include refid="comList" />
+		from t_book_base_support where book_id=#{bookId} and
+		data_status=#{dataStatus}
+
+	</select>
+	<insert id="insert" parameterType="com.wtlib.base.pojo.BookBaseSupport">
+		insert into t_book_base_support
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+
+			<if test="bookId != null">
+				book_id,
+			</if>
+			<if test="isReservateAble != null">
+				is_reservate_able,
+			</if>
+			<if test="isBorrowAble != null">
+				is_borrow_able,
+			</if>
+			<if test="currentLeftBookNumber != null">
+				current_left_book_number,
+			</if>
+			<if test="currentReservateNumber != null">
+				current_reservate_number,
+			</if>
+			<if test="singleBookNumber != null">
+				single_book_number,
+			</if>
+			<if test="creator != null">
+				creator,
+			</if>
+
+			<if test="reviser != null">
+				reviser,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+
+			create_time
+
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+
+			<if test="bookId != null">
+				#{bookId,jdbcType=INTEGER},
+			</if>
+			<if test="isReservateAble != null">
+				#{isReservateAble,jdbcType=CHAR},
+			</if>
+			<if test="isBorrowAble != null">
+				#{isBorrowAble,jdbcType=CHAR},
+			</if>
+			<if test="currentLeftBookNumber != null">
+				#{currentLeftBookNumber,jdbcType=INTEGER},
+			</if>
+			<if test="currentReservateNumber != null">
+				#{currentReservateNumber,jdbcType=INTEGER},
+			</if>
+			<if test="singleBookNumber != null">
+				#{singleBookNumber,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				#{creator,jdbcType=INTEGER},
+			</if>
+			<if test="reviser != null">
+				#{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=VARCHAR},
+			</if>
+			now()
+		</trim>
+	</insert>
+
+	<update id="updateByBookId" parameterType="com.wtlib.base.pojo.BookBaseSupport">
+		update t_book_base_support
+		<set>
+			<if test="isReservateAble != null">
+				is_reservate_able = #{isReservateAble,jdbcType=CHAR},
+			</if>
+			<if test="isBorrowAble != null">
+				is_borrow_able = #{isBorrowAble,jdbcType=CHAR},
+			</if>
+			<if test="currentLeftBookNumber != null">
+				current_left_book_number =
+				#{currentLeftBookNumber,jdbcType=INTEGER},
+			</if>
+			<if test="currentReservateNumber != null">
+				current_reservate_number =
+				#{currentReservateNumber,jdbcType=INTEGER},
+			</if>
+			<if test="singleBookNumber != null">
+				single_book_number =
+				#{singleBookNumber,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				creator = #{creator,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reviser != null">
+				reviser = #{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=VARCHAR},
+			</if>
+			update_time = now()
+		</set>
+		where
+
+		book_id = #{bookId,jdbcType=INTEGER}
+
+	</update>
+
+
+</mapper>

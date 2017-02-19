@@ -1,0 +1,52 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*大C个人中心*/
+.list_control li{
+	list-style-type:disc; 
+	font-size:14px; 
+	padding:15px 0;
+	margin-left:35px; 
+	color:#2a2a2a;
+}
+.list_control li span{
+	display:block;
+	margin-top:15px;
+	color:#5f5f5f;
+}
+.unVerified{
+		background:#eeeeee;
+}
+.unVerified li{
+	background:#eeeeee;
+	color:#bdbdbd;
+}
+.unVerified li span{
+	color:#c9c9c9;
+}
+/*购物车*/
+.twisterSwatchWrapper_0 {
+    min-width: 166px;
+    min-height: 44px;
+}
+.twisterImages {
+    display: table;
+}
+.twisterSwatchWrapper {
+    max-width: 166px;
+}
+.twisterImageDiv {
+    float: left;
+    padding: 3px;
+}
+.twisterSlotDiv {
+    min-height: 44px;
+}
+.addTwisterPadding {
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding: 3px;
+}
+.disabled_p{
+	background:#f5f5f5;
+}

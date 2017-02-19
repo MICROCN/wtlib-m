@@ -1,0 +1,7 @@
+图书管理系统文档
+
+Entitys
+
+BookBase  基本图书实体	 
+
+	
