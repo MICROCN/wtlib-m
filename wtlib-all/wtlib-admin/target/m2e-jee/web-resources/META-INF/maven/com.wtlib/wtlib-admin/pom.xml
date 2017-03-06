@@ -50,10 +50,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-core</artifactId>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-collections</groupId>
@@ -132,31 +128,6 @@
 					<source>1.7</source>
 					<target>1.7</target>
 					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<configuration>
-					<webApp>
-						<contextPath>/</contextPath>
-					</webApp>
-					<scanIntervalSeconds>5</scanIntervalSeconds>
-					<stopKey>wtlibadmin</stopKey>
-					<stopPort>9999</stopPort>
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>1118</port>
-							<maxIdleTime>60000</maxIdleTime>
-						</connector>
-					</connectors>
-					<requestLog implementation="org.eclipse.jetty.server.NCSARequestLog">
-						<filename>target/access.log</filename>
-						<retainDays>90</retainDays>
-						<append>false</append>
-						<extended>false</extended>
-						<logTimeZone>GMT+8:00</logTimeZone>
-					</requestLog>
 				</configuration>
 			</plugin>
 		</plugins>

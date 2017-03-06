@@ -1,14 +1,15 @@
 @echo off
 
-cd ../px-base
+cd ../wtlib-common
 call mvn clean install -Dmaven.test.skip
 if %errorlevel% GTR 0 goto END
 
-cd ../px-common
+cd ../wtlib-base
+echo ddddddddddddddddddddddddddddddddddddddddd
 call mvn clean install -Dmaven.test.skip
 if %errorlevel% GTR 0 goto END
 
-cd ../px-admin
+cd ../wtlib-admin
 call mvn clean install -Dmaven.test.skip
 if %errorlevel% GTR 0 goto END
 

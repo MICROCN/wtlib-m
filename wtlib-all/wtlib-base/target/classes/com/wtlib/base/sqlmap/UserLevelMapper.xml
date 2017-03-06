@@ -6,7 +6,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="level_name" property="levelName" jdbcType="VARCHAR" />
     <result column="level_min_credit_value" property="levelMinCreditValue" jdbcType="INTEGER" />
-    <result column="level_weight" property="levelWeight" jdbcType="double" />
+    <result column="level_weight" property="levelWeight" jdbcType="DOUBLE" />
     <result column="level_desc" property="levelDesc" jdbcType="VARCHAR" />
     <result column="creator" property="creator" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />

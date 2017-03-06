@@ -57,7 +57,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="mapperLocations" value="classpath:com/wtlib/sqlmap/*.xml" />
+		<property name="mapperLocations" value="classpath:com/wtlib/base/sqlmap/*.xml" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -119,7 +119,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	<aop:config>
 		<aop:advisor advice-ref="druid-stat-interceptor"
 			pointcut-ref="druid-stat-pointcut" />
-	</aop:config>
+	</aop:config> 
 
 
 </beans>
