@@ -5,8 +5,6 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd
 ">
-	<!-- 引入属性文件 -->
-	<context:property-placeholder location="classpath:init_test.properties" />
 	<!-- 自动扫描(自动注入) -->
-	<context:component-scan base-package="com.wtlib.base.service" />
+	<context:component-scan base-package="com.wtlib.base.service.*" />
 </beans>

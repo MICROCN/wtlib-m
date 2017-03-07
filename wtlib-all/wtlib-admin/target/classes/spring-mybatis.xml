@@ -14,9 +14,9 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	<!-- 配置数据源 -->
 	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
-		<property name="url" value="${jdbc_url}" />
-		<property name="username" value="${jdbc_username}" />
-		<property name="password" value="${jdbc_password}" />
+		<property name="url" value="jdbc:mysql://115.159.91.75:3306/wtlib?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull" />
+		<property name="username" value="root" />
+		<property name="password" value="xdy2017root" />
 
 		<!-- 初始化连接大小 -->
 		<property name="initialSize" value="10" />
@@ -30,7 +30,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		<property name="maxPoolPreparedStatementPerConnectionSize"
 			value="-1" />
 
-		<property name="validationQuery" value="${validationQuery}" />
+		<property name="validationQuery" value="SELECT 1" />
 		<property name="testOnBorrow" value="false" />
 		<property name="testOnReturn" value="false" />
 		<property name="testWhileIdle" value="true" />
@@ -57,7 +57,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis-config.xml" />
 		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-		<property name="mapperLocations" value="classpath:com/wtlib/sqlmap/*.xml" />
+		<property name="mapperLocations" value="classpath:com/wtlib/base/sqlmap/*.xml" />
 	</bean>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
