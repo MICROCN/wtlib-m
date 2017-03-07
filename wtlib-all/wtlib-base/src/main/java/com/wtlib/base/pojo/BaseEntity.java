@@ -6,9 +6,7 @@ import com.wtlib.base.pojo.request.Page;
 
 public class BaseEntity extends Page {
 
-	/**
-	 * @Fields serialVersionUID : TODO
-	 */
+
 	private static final long serialVersionUID = -8212788099710575029L;
 
 	private Integer creator;
@@ -21,6 +19,9 @@ public class BaseEntity extends Page {
 
 	private String dataStatus;
 
+	public BaseEntity(){}
+
+	
 	public Integer getCreator() {
 		return creator;
 	}

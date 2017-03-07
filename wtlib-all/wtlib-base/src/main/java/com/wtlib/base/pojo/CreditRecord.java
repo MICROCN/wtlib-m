@@ -15,7 +15,7 @@ public class CreditRecord extends BaseEntity {
 
 	private Integer creditInfoId;
 
-	private Integer creditIsPlus;
+	private String creditIsPlus;
 
 	private String creditName;
 
@@ -49,11 +49,13 @@ public class CreditRecord extends BaseEntity {
 		this.creditInfoId = creditInfoId;
 	}
 
-	public Integer getCreditIsPlus() {
+	
+
+	public String getCreditIsPlus() {
 		return creditIsPlus;
 	}
 
-	public void setCreditIsPlus(Integer creditIsPlus) {
+	public void setCreditIsPlus(String creditIsPlus) {
 		this.creditIsPlus = creditIsPlus;
 	}
 

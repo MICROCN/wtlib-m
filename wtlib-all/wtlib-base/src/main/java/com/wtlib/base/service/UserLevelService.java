@@ -3,7 +3,7 @@ package com.wtlib.base.service;
 import com.wtlib.base.pojo.UserLevel;
 
 /**
- * @Description: TODO
+ * @Description: 用户等级服务
  * @author zongzi
  * @date 2017年1月22日 下午1:50:41
  */

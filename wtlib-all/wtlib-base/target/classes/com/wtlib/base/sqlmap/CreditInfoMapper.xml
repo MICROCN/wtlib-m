@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.CreditInfoMapper" >
+<mapper namespace="com.wtlib.dao.CreditInfoMapper" >
   <resultMap id="CreditInfoMap" type="com.wtlib.base.pojo.CreditInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="credit_name" property="creditName" jdbcType="VARCHAR" />
-    <result column="mini_user_level_id" property="miniUserLevelId" jdbcType="INTEGER" />
+    <result column="mini_user_level" property="miniUserLevel" jdbcType="INTEGER" />
     <result column="is_plus" property="isPlus" jdbcType="CHAR" />
     <result column="credit_value" property="creditValue" jdbcType="INTEGER" />
     <result column="creator" property="creator" jdbcType="INTEGER" />
@@ -14,17 +14,17 @@
     <result column="data_status" property="dataStatus" jdbcType="CHAR" />
   </resultMap>
   <sql id="comList" >
-    id, credit_name, mini_user_level_id, is_plus, credit_value, creator, create_time, 
+    id, credit_name, mini_user_level, is_plus, credit_value, creator, create_time, 
     reviser, update_time, data_status
   </sql>
-  <select id="selectById" resultMap="CreditInfoMap" parameterType="java.lang.Integer" >
+  <select id="selectById" resultMap="CreditInfoMap">
     select 
     <include refid="comList" />
     from t_credit_info
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and  data_status = #{dataStatus}
   </select>
-  <delete id="deleteById" parameterType="java.lang.Integer" >
-    delete from t_credit_info
+  <delete id="deleteById">
+    update t_credit_info set reviser=#{reviser},data_status = #{dataStatus}
     where id = #{id,jdbcType=INTEGER}
   </delete>
   
@@ -35,8 +35,8 @@
       <if test="creditName != null" >
         credit_name,
       </if>
-      <if test="miniUserLevelId != null" >
-        mini_user_level_id,
+      <if test="miniUserLevel != null" >
+        mini_user_level,
       </if>
       <if test="isPlus != null" >
         is_plus,
@@ -63,8 +63,8 @@
       <if test="creditName != null" >
         #{creditName,jdbcType=VARCHAR},
       </if>
-      <if test="miniUserLevelId != null" >
-        #{miniUserLevelId,jdbcType=INTEGER},
+      <if test="miniUserLevel != null" >
+        #{miniUserLevel,jdbcType=INTEGER},
       </if>
       <if test="isPlus != null" >
         #{isPlus,jdbcType=CHAR},
@@ -93,8 +93,8 @@
       <if test="creditName != null" >
         credit_name = #{creditName,jdbcType=VARCHAR},
       </if>
-      <if test="miniUserLevelId != null" >
-        mini_user_level_id = #{miniUserLevelId,jdbcType=INTEGER},
+      <if test="miniUserLevel != null" >
+        mini_user_level = #{miniUserLevel,jdbcType=INTEGER},
       </if>
       <if test="isPlus != null" >
         is_plus = #{isPlus,jdbcType=CHAR},

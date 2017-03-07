@@ -2,22 +2,35 @@ package com.wtlib.base.service.serviceImpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wtlib.base.constants.DataStatusEnum;
+import com.wtlib.base.dao.BorrowRecordMapper;
 import com.wtlib.base.pojo.BorrowRecord;
 import com.wtlib.base.service.BorrowRecordService;
 
 /**
- * @author zongzi
+ * @author pohoulong
  * @date 2017年1月22日 下午2:03:18
  */
 @Service("borrowRecordService")
 public class BorrowRecordServiceImpl implements BorrowRecordService {
 
+	@Autowired
+	BorrowRecordMapper borrowRecordMapper;
+	
+
 	@Override
-	public int insert(BorrowRecord entity) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<BorrowRecord> selectAllByUserId(String id,String borrowCode,String dataStatus) {
+		List<BorrowRecord> record = borrowRecordMapper.selectAllByUserId(id,borrowCode,dataStatus);
+		return record;
+	}
+	
+	@Override
+	public Integer insert(BorrowRecord entity) throws Exception {
+		int num = borrowRecordMapper.insert(entity);
+		return num;
 	}
 
 	@Override
@@ -27,19 +40,19 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
 	}
 
 	@Override
-	public BorrowRecord selectById(Object id) throws Exception {
+	public BorrowRecord selectById(Object id,String dataStatus) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<BorrowRecord> selectAll() throws Exception {
+	public List<BorrowRecord> selectAll(String dataStatus) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public int deleteById(Object id) throws Exception {
+	public int deleteById(Object id,Object reviser) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
@@ -54,6 +67,12 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
 	public BorrowRecord find(Object str) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public BorrowRecord selectBySingleId(Integer singleId) {
+		BorrowRecord record = borrowRecordMapper.selectBySingleId(singleId,DataStatusEnum.NORMAL_USED.getCode());
+		return record;
 	}
 
 }

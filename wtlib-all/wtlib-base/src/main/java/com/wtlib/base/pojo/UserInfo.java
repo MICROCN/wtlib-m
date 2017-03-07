@@ -13,11 +13,20 @@ public class UserInfo extends BaseEntity {
 
 	private Integer userId;
 
-	private Integer currentCreditLevel;
+	private Integer userLevelId;
 
 	private Integer currentCreditValue;
+
+	private String userName;
+
+	public UserInfo(){}
 	
-	private String username;
+	public UserInfo(Integer userId, String userName) {
+		this.userId = userId;
+		this.userName = userName;
+		userLevelId = 1;
+		currentCreditValue = 0;
+	}
 
 	public Integer getId() {
 		return id;
@@ -35,7 +44,6 @@ public class UserInfo extends BaseEntity {
 		this.userId = userId;
 	}
 
-
 	public Integer getCurrentCreditValue() {
 		return currentCreditValue;
 	}
@@ -44,21 +52,20 @@ public class UserInfo extends BaseEntity {
 		this.currentCreditValue = currentCreditValue;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	public Integer getCurrentCreditLevel() {
-		return currentCreditLevel;
+	public Integer getUserLevelId() {
+		return userLevelId;
 	}
 
-	public void setCurrentCreditLevel(Integer currentCreditLevel) {
-		this.currentCreditLevel = currentCreditLevel;
+	public void setUserLevelId(Integer userLevelId) {
+		this.userLevelId = userLevelId;
 	}
 
-	
 }

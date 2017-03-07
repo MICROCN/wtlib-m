@@ -2,6 +2,8 @@ package com.wtlib.base.service.serviceImpl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +16,12 @@ import com.wtlib.base.dao.BookBaseSupportMapper;
 import com.wtlib.base.dao.BookReservationMapper;
 import com.wtlib.base.pojo.BookBaseSupport;
 import com.wtlib.base.pojo.BookReservation;
+import com.wtlib.base.service.BookBaseSupportService;
 import com.wtlib.base.service.BookReservationService;
 
 /**
  * @Description: 图书预约类
- * @author zongzi
+ * @author pohoulong
  * @date 2017年1月22日 下午1:56:32
  */
 @Service("bookReservationService")
@@ -27,12 +30,13 @@ public class BookReservationServiceImpl implements BookReservationService {
 	@Autowired
 	private BookReservationMapper bookReservationMapper;
 
-	@Autowired
-	private BookBaseSupportMapper bookBaseSupportMapper;
+	@Resource(name="bookBaseSupportService")
+	private BookBaseSupportService bookBaseSupportService;
 
 	@Override
-	public int insert(BookReservation entity) throws Exception {
-		return 0;
+	public Integer insert(BookReservation entity) throws Exception {
+		return bookReservationMapper
+				.insert(entity);
 	}
 
 	@Override
@@ -41,17 +45,17 @@ public class BookReservationServiceImpl implements BookReservationService {
 	}
 
 	@Override
-	public BookReservation selectById(Object id) throws Exception {
+	public BookReservation selectById(Object id,String dataStatus) throws Exception {
 		return null;
 	}
 
 	@Override
-	public List<BookReservation> selectAll() throws Exception {
+	public List<BookReservation> selectAll(String dataStatus) throws Exception {
 		return null;
 	}
 
 	@Override
-	public int deleteById(Object id) throws Exception {
+	public int deleteById(Object id,Object reviser) throws Exception {
 		return 0;
 	}
 
@@ -61,12 +65,12 @@ public class BookReservationServiceImpl implements BookReservationService {
 	}
 
 	@Override
-	public Boolean insertNewBookReservation(Integer bookId, Integer userId)
+	public Boolean insertNewBookReservation(Integer bookBaseId, Integer userId)
 			throws Exception {
 
 		// 检查书本是否可以预约
-		BookBaseSupport bookBaseSupport = bookBaseSupportMapper
-				.selectBookBaseSupportByBookId(bookId,
+		BookBaseSupport bookBaseSupport = bookBaseSupportService
+				.selectBookBaseSupportByBookBaseId(bookBaseId,
 						DataStatusEnum.NORMAL_USED.getCode());
 
 		Assert.isTrue(null != bookBaseSupport, "null bookId");
@@ -74,7 +78,7 @@ public class BookReservationServiceImpl implements BookReservationService {
 		String isReservateAble = bookBaseSupport.getIsReservateAble();
 
 		Assert.isTrue(StringUtils.equals(OptionStatusEnum.OPENT_TRUE.getCode(),
-				isReservateAble), "reservation of book:" + bookId
+				isReservateAble), "reservation of book:" + bookBaseId
 				+ " isn't avaliable");
 
 		Integer currentReservateNumber = bookBaseSupport
@@ -87,7 +91,7 @@ public class BookReservationServiceImpl implements BookReservationService {
 
 		BookBaseSupport bookBaseSupportTemp = new BookBaseSupport();
 
-		bookBaseSupportTemp.setBookId(bookId);
+		bookBaseSupportTemp.setBookBaseId(bookBaseId);
 
 		bookBaseSupportTemp
 				.setCurrentReservateNumber(currentReservateNumber + 1);
@@ -99,7 +103,7 @@ public class BookReservationServiceImpl implements BookReservationService {
 		}
 
 		// 更新图书基础信息
-		Integer updateBookBaseSupport = bookBaseSupportMapper
+		Integer updateBookBaseSupport = bookBaseSupportService
 				.updateByBookId(bookBaseSupportTemp);
 
 		Assert.isTrue(
@@ -109,12 +113,12 @@ public class BookReservationServiceImpl implements BookReservationService {
 
 		// 添加预约记录
 		BookReservation bookReservation = new BookReservation();
-		bookReservation.setBookId(bookId);
+		bookReservation.setBookId(bookBaseId);
 		bookReservation.setUserId(userId);
 		bookReservation.setCreator(userId);
 		int insertBookReservation = bookReservationMapper
 				.insert(bookReservation);
-		
+
 		Assert.isTrue(insertBookReservation == 1,
 				"insert book reservation record faild");
 
@@ -123,7 +127,6 @@ public class BookReservationServiceImpl implements BookReservationService {
 
 	@Override
 	public BookReservation find(Object str) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

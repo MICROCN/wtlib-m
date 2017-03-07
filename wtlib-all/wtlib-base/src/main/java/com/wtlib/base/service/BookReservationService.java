@@ -5,7 +5,7 @@ import com.wtlib.base.pojo.BookReservation;
 /**
  * ClassName: BookReservationService
  * 
- * @Description: TODO
+ * @Description: 图书预约类接口
  * @author zongzi
  * @date 2017年1月22日 下午1:44:41
  */

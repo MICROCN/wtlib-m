@@ -3,6 +3,7 @@ package com.wtlib.base.dao;
 import org.apache.ibatis.annotations.Param;
 
 import com.wtlib.base.pojo.BookBaseSupport;
+import com.wtlib.base.pojo.BookSingle;
 
 /**
  * ClassName: BookBaseSupportMapper
@@ -13,9 +14,10 @@ import com.wtlib.base.pojo.BookBaseSupport;
  */
 public interface BookBaseSupportMapper extends BaseDao<BookBaseSupport> {
 
-	public BookBaseSupport selectBookBaseSupportByBookId(
-			@Param("bookId") Integer bookId,
+	public BookBaseSupport selectBookBaseSupportByBookBaseId(
+			@Param("bookBaseId") Integer bookBaseId,
 			@Param("dataStatus") String dataStatus);
+	
 
 	/**
 	 * 根据bookbaseSupport的bookId来更新图书辅助表信息
@@ -26,5 +28,9 @@ public interface BookBaseSupportMapper extends BaseDao<BookBaseSupport> {
 	 * @date 2017年2月15日 下午1:56:11
 	 */
 	public Integer updateByBookId(BookBaseSupport bookBaseSupportTemp);
+
+
+	public void deleteByBaseId(@Param("id")Integer id,@Param("reviser") Integer reviser);
+
 
 }

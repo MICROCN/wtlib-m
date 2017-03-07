@@ -13,7 +13,7 @@ public class BorrowRecord extends BaseEntity {
 
 	private Integer id;
 
-	private Integer bookId;
+	private Integer bookSingleId;
 
 	private Integer userId;
 
@@ -23,6 +23,14 @@ public class BorrowRecord extends BaseEntity {
 
 	private Date returnTime;
 
+	public BorrowRecord(){}
+
+	public BorrowRecord(Integer bookSingleId, Integer userId, Date borrowDeadLine){
+		this.bookSingleId = bookSingleId;
+		this.userId = userId;
+		this.borrowDeadLine = borrowDeadLine;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -31,12 +39,12 @@ public class BorrowRecord extends BaseEntity {
 		this.id = id;
 	}
 
-	public Integer getBookId() {
-		return bookId;
+	public Integer getBookSingleId() {
+		return bookSingleId;
 	}
 
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
+	public void setBookSingleId(Integer bookSingleId) {
+		this.bookSingleId = bookSingleId;
 	}
 
 	public Integer getUserId() {

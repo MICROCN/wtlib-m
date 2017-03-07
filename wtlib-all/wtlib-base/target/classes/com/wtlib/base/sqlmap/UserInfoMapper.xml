@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.UserInfoMapper">
+<mapper namespace="com.wtlib.dao.UserInfoMapper">
 
 	<resultMap id="UserInfoMap" type="com.wtlib.base.pojo.UserInfo">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="user_id" property="userId" jdbcType="INTEGER" />
-		<result column="current_credit_level" property="currentCreditLevel"
-			jdbcType="CHAR" />
+		<result column="user_name" property="userName" jdbcType="CHAR" />
+		<result column="user_level_id" property="userLevelId" jdbcType="INTEGER" />
 		<result column="current_credit_value" property="currentCreditValue"
 			jdbcType="INTEGER" />
 		<result column="creator" property="creator" jdbcType="INTEGER" />
@@ -15,16 +15,26 @@
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="data_status" property="dataStatus" jdbcType="CHAR" />
 	</resultMap>
-	
+
+	<update id="updateLevel">
+
+	</update>
+
 	<update id="deleteById" parameterType="java.lang.Integer">
 		UPDATE t_user_info,
-		 t_user
+		t_user
 		SET t_user_info.data_status = "000",
-		 t_user.data_status = "000"
+		t_user.data_status = "000",
+		t_user.reviser = #{reviser},
+		t_user_info.reviser = #{reviser}
 		WHERE
-			t_user_info.user_id = #{id}
+		t_user_info.user_id = #{id}
 		AND t_user.id = t_user_info.user_id
 	</update>
+
+	<select id="selectByUserId" resultMap="UserInfoMap">
+		select *  from t_user_info where user_id = #{id} and data_status = #{dataStatus}
+	</select>
 
 	<insert id="insert" parameterType="com.wtlib.base.pojo.UserInfo">
 		insert into t_user_info
@@ -33,8 +43,11 @@
 			<if test="userId != null">
 				user_id,
 			</if>
-			<if test="currentCreditLevel != null">
-				current_credit_level,
+			<if test="userName != null">
+				user_name,
+			</if>
+			<if test="userLevelId != null">
+				user_level_id,
 			</if>
 			<if test="currentCreditValue != null">
 				current_credit_value,
@@ -48,9 +61,7 @@
 			<if test="updateTime != null">
 				update_time,
 			</if>
-			<if test="dataStatus == null">
-				data_status,
-			</if>
+			data_status,
 			create_time
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -58,8 +69,11 @@
 			<if test="userId != null">
 				#{userId,jdbcType=INTEGER},
 			</if>
-			<if test="currentCreditLevel != null">
-				#{currentCreditLevel,jdbcType=CHAR},
+			<if test="userName != null">
+				#{userName,jdbcType=CHAR},
+			</if>
+			<if test="userLevelId != null">
+				#{userLevelId,jdbcType=INTEGER},
 			</if>
 			<if test="currentCreditValue != null">
 				#{currentCreditValue,jdbcType=INTEGER},
@@ -73,21 +87,19 @@
 			<if test="updateTime != null">
 				#{updateTime,jdbcType=TIMESTAMP},
 			</if>
-			<if test="dataStatus != null">
-				#{001,jdbcType=CHAR},
-			</if>
+			"001",
 			now()
 		</trim>
 	</insert>
-	<update id="updateById" parameterType="com.wtlib.base.pojo.UserInfo">
+	<update id="update" parameterType="com.wtlib.base.pojo.UserInfo">
 		update t_user_info
 		<set>
 			<if test="userId != null">
 				user_id = #{userId,jdbcType=INTEGER},
 			</if>
-			<if test="currentCreditLevel != null">
-				current_credit_level =
-				#{currentCreditLevel,jdbcType=CHAR},
+			<if test="userLevelId != null">
+				user_level_id =
+				#{userLevelId,jdbcType=INTEGER},
 			</if>
 			<if test="currentCreditValue != null">
 				current_credit_value =
@@ -109,25 +121,31 @@
 		</set>
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-	
-  <select id="selectByUsername" parameterType="java.lang.String" resultType = "com.wtlib.base.dto.UserWebDto">
-	  SELECT
-		username,
+
+	<select id="selectByUsername" parameterType="java.lang.String"
+		resultType="com.wtlib.base.dto.UserWebDto">
+		SELECT
+		user_name,
 		login_id as loginId,
-		current_credit_value as currentCreditValue,
-		level_name as currentCreditLevel,
+		current_credit_value as
+		currentCreditValue,
+		t_user_info.user_level_id as userLevelId,
 		t_user.creator,
 		t_user.create_time as createTime,
-		t_user.reviser as reviser,
+		t_user.reviser as
+		reviser,
 		t_user.update_time as updateTime,
-		t_user.data_status as dataStatus
-	FROM
+		t_user.data_status as
+		dataStatus
+		FROM
 		t_user,
 		t_user_info,
 		t_user_level
-	WHERE
-		username=#{username}
-	AND t_user.id = user_id
-	AND user_level_id = t_user_level.id;
-  </select>
+		WHERE
+		user_name=#{userName}
+		AND t_user.id
+		= user_id
+		AND user_level_id =
+		t_user_level.id and t_user.data_status=#{dataStatus} and t_user_info.data_status=#{dataStatus} and t_user_level.data_status=#{dataStatus} ;
+	</select>
 </mapper>

@@ -31,15 +31,12 @@
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>org.eclipse.m2e.core.maven2Builder</name>
-<<<<<<< HEAD
-=======
+			<name>com.genuitec.eclipse.ast.deploy.core.DeploymentBuilder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
-			<name>com.genuitec.eclipse.ast.deploy.core.DeploymentBuilder</name>
->>>>>>> 1d9d1221cfa07fcbaf993011c3a1876109d4940d
+			<name>org.eclipse.m2e.core.maven2Builder</name>
 			<arguments>
 			</arguments>
 		</buildCommand>

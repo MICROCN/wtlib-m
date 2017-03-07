@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wtlib.dao.BookBaseLabelInfoMapper">
+	<resultMap id="BookBaseLabelMap" type="com.wtlib.base.pojo.BookBaseLabelInfo">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="book_base_id" property="bookBaseId" jdbcType="INTEGER" />
+		<result column="label_info_id" property="labelInfoId" jdbcType="INTEGER" />
+		<result column="creator" property="creator" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="reviser" property="reviser" jdbcType="INTEGER" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="data_status" property="dataStatus" jdbcType="CHAR" />
+	</resultMap>
+	<sql id="comList">
+		id, book_base_id, label_info_id, creator, create_time,
+		reviser,
+		update_time, data_status
+	</sql>
+
+	<select id="selectById" resultMap="BookBaseLabelMap">
+		select
+		<include refid="comList" />
+		from t_book_base_label_info
+		where id = #{id,jdbcType=INTEGER} and data_status = #{dataStatus}
+	</select>
+
+	<delete id="deleteByLabelId" parameterType="java.lang.Integer">
+		update
+		t_book_base_label_info set data_status = "000",reviser = #{reviser}
+		where book_base_id =
+		#{labelId,jdbcType=INTEGER}
+	</delete>
+
+	<insert id="insert" parameterType="com.wtlib.base.pojo.BookBaseLabelInfo">
+		insert into t_book_base_label_info
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="bookBaseId != null">
+				book_base_id,
+			</if>
+			<if test="labelInfoId != null">
+				label_info_id,
+			</if>
+			<if test="creator != null">
+				creator,
+			</if>
+			<if test="reviser != null">
+				reviser,
+			</if>
+			<if test="updateTime != null">
+				update_time,
+			</if>
+			<if test="dataStatus != null">
+				data_status,
+			</if>
+			create_time
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="bookBaseId != null">
+				#{bookBaseId,jdbcType=INTEGER},
+			</if>
+			<if test="labelInfoId != null">
+				#{labelInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				#{creator,jdbcType=INTEGER},
+			</if>
+			
+			<if test="reviser != null">
+				#{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="updateTime != null">
+				#{updateTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="dataStatus != null">
+				#{dataStatus,jdbcType=CHAR},
+			</if>
+				now()
+		</trim>
+	</insert>
+	<update id="update" parameterType="com.wtlib.base.pojo.BookBaseLabelInfo">
+		update t_book_base_label_info
+		<set>
+			<if test="bookBaseId != null">
+				book_base_id = #{bookBaseId,jdbcType=INTEGER},
+			</if>
+			<if test="labelInfoId != null">
+				label_info_id = #{labelInfoId,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				creator = #{creator,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reviser != null">
+				reviser = #{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=CHAR},
+			</if>
+				update_time = now()
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

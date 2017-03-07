@@ -25,6 +25,18 @@ public class BookSingle extends BaseEntity {
 
 	private Date lastLendTime;
 
+	public BookSingle(){}
+	
+	public BookSingle(String bookHash,Integer reviser){
+		this.bookHash = bookHash;
+		this.setReviser(reviser);
+	}
+	
+	public BookSingle(Integer bookBaseId, String bookHash) {
+		this.bookBaseId = bookBaseId;
+		this.bookHash = bookHash;
+	}
+
 	public Integer getId() {
 		return id;
 	}

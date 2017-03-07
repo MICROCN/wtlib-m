@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.UserMapper">
+<mapper namespace="com.wtlib.dao.UserMapper">
 
 	<resultMap id="UserMap" type="com.wtlib.base.pojo.User">
 		<id column="id" property="id" jdbcType="INTEGER" />
@@ -12,16 +12,14 @@
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="data_status" property="dataStatus" jdbcType="CHAR" />
 	</resultMap>
-	<select id="selectById" parameterType="java.lang.Integer"
-	resultMap="UserMap">
-	select * from t_user where id = #{id}
 
-	</select>
 	<update id="deleteById" parameterType="java.lang.Integer">
 		UPDATE t_user_info,
 		t_user
 		SET t_user_info.data_status = "000",
-		t_user.data_status = "000"
+		t_user.data_status = "000",
+		t_user_info.reviser =#{reviser},
+		t_user.reviser = #{reviser}
 		WHERE
 		t_user.id = #{id}
 		AND t_user_info.user_id = t_user.id
@@ -46,9 +44,7 @@
 			<if test="updateTime != null">
 				update_time,
 			</if>
-			<if test="dataStatus == null">
-				data_status,
-			</if>
+			data_status,
 			create_time
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -68,9 +64,7 @@
 			<if test="updateTime != null">
 				#{updateTime,jdbcType=TIMESTAMP},
 			</if>
-			<if test="dataStatus != null">
-				#{001,jdbcType=CHAR},
-			</if>
+			"001",
 			now()
 		</trim>
 	</insert>
@@ -101,14 +95,40 @@
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 
-	<select id="selectByLoginId" parameterType="java.lang.String"
+	<select id="selectAllById" parameterType="java.lang.String"
 		resultType="com.wtlib.base.dto.UserWebDto">
 		SELECT
-		username,
+		t_user_info.user_name,
 		login_id as loginId,
 		current_credit_value as
 		currentCreditValue,
-		level_name as currentCreditLevel,
+		t_user_info.user_level_id as
+		userLevelId,
+		t_user.creator,
+		t_user.create_time as createTime,
+		t_user.reviser as reviser,
+		t_user.update_time as updateTime,
+		t_user.data_status as dataStatus
+		FROM
+		t_user,
+		t_user_info,
+		t_user_level
+		WHERE
+		t_user.id = #{userId}
+		AND t_user_info.user_id = t_user.id
+		AND
+		user_level_id = t_user_level.id and t_user.data_status = #{dataStatus} and t_user_info.data_status = #{dataStatus} and t_user_level.data_status = #{dataStatus};
+	</select>
+
+	<select id="selectByLoginId" parameterType="java.lang.String"
+		resultType="com.wtlib.base.dto.UserWebDto">
+		SELECT
+		t_user_info.user_name,
+		login_id as loginId,
+		current_credit_value as
+		currentCreditValue,
+		t_user_info.user_level_id as
+		userLevelId,
 		t_user.creator,
 		t_user.create_time as createTime,
 		t_user.reviser as reviser,
@@ -121,12 +141,13 @@
 		WHERE
 		login_id = #{loginId}
 		AND t_user.id = user_id
-		AND user_level_id = t_user_level.id;
+		AND user_level_id =
+		t_user_level.id and  t_user.data_status = #{dataStatus} and  t_user_info.data_status = #{dataStatus} and  t_user_level.data_status = #{dataStatus};
 	</select>
 
 	<select id="confirm" parameterType="com.wtlib.base.pojo.User">
 		SELECT id FROM t_user WHERE
-		login_id = #{loginId} AND password = #{password}
+		login_id = #{user.loginId} AND password = #{user.password} and dataStatus = #{dataStatus}
 	</select>
 
 </mapper>

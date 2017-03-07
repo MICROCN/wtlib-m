@@ -2,15 +2,20 @@ package com.wtlib.base.dto;
 
 import com.wtlib.base.pojo.BaseEntity;
 
-public class UserWebDto extends BaseEntity{
+public class UserWebDto extends BaseEntity {
+
+	/**
+	 * @Fields serialVersionUID : TODO
+	 */
+	private static final long serialVersionUID = 5623709212932161184L;
 
 	private String loginId;
-	
-	private String currentCreditLevel;
+
+	private Integer userLevelId;
 
 	private Integer currentCreditValue;
-	
-	private String username;
+
+	private String userName;
 
 	public String getLoginId() {
 		return loginId;
@@ -20,12 +25,12 @@ public class UserWebDto extends BaseEntity{
 		this.loginId = loginId;
 	}
 
-	public String getCurrentCreditLevel() {
-		return currentCreditLevel;
+	public Integer getUserLevelId() {
+		return userLevelId;
 	}
 
-	public void setCurrentCreditLevel(String currentCreditLevel) {
-		this.currentCreditLevel = currentCreditLevel;
+	public void setUserLevelId(Integer userLevelId) {
+		this.userLevelId = userLevelId;
 	}
 
 	public Integer getCurrentCreditValue() {
@@ -36,14 +41,12 @@ public class UserWebDto extends BaseEntity{
 		this.currentCreditValue = currentCreditValue;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-	
-	
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.CreditRecordMapper" >
+<mapper namespace="com.wtlib.dao.CreditRecordMapper" >
   <resultMap id="CreditRecordMap" type="com.wtlib.base.pojo.CreditRecord" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
@@ -24,7 +24,7 @@
     select 
     <include refid="comList" />
     from t_credit_record
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and  data_status = #{dataStatus}
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer" >
     delete from t_credit_record

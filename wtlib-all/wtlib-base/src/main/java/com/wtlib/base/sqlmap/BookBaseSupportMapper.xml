@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.BookBaseSupportMapper">
+<mapper namespace="com.wtlib.dao.BookBaseSupportMapper">
 	<resultMap id="BaseBookSupportMap" type="com.wtlib.base.pojo.BookBaseSupport">
 		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="book_id" property="bookId" jdbcType="INTEGER" />
+		<result column="book_base_id" property="bookBaseId" jdbcType="INTEGER" />
 		<result column="is_reservate_able" property="isReservateAble"
 			jdbcType="CHAR" />
 		<result column="is_borrow_able" property="isBorrowAble"
@@ -20,39 +20,32 @@
 		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
 		<result column="data_status" property="dataStatus" jdbcType="VARCHAR" />
 	</resultMap>
-	<sql id="comList">
-		id, book_id, is_reservate_able, is_borrow_able,
-		current_left_book_number,
-		current_reservate_number,
-		single_book_number,
-		creator, create_time, reviser, update_time, data_status
-	</sql>
 
+	<select id="selectBookBaseSupportByBookBaseId" resultMap="BaseBookSupportMap">
+		select
+		* from t_book_base_support
+		where book_base_id =
+		#{bookBaseId,jdbcType=INTEGER}
+		AND data_status=#{dataStatus}
+	</select>
 
 	<select id="selectById" resultMap="BaseBookSupportMap"
 		parameterType="java.lang.Integer">
 		select
-		<include refid="comList" />
-		from t_book_base_support
-		where id = #{id,jdbcType=INTEGER}
+		* from t_book_base_support
+		where id =
+		#{id,jdbcType=INTEGER}
+		AND data_status=#{dataStatus}
 	</select>
 	<delete id="deleteById" parameterType="java.lang.Integer">
 
 	</delete>
-	<select id="selectBookBaseSupportByBookId" resultMap="BaseBookSupportMap">
-
-		select
-		<include refid="comList" />
-		from t_book_base_support where book_id=#{bookId} and
-		data_status=#{dataStatus}
-
-	</select>
 	<insert id="insert" parameterType="com.wtlib.base.pojo.BookBaseSupport">
 		insert into t_book_base_support
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 
-			<if test="bookId != null">
-				book_id,
+			<if test="bookBaseId != null">
+				book_base_id,
 			</if>
 			<if test="isReservateAble != null">
 				is_reservate_able,
@@ -88,8 +81,8 @@
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 
-			<if test="bookId != null">
-				#{bookId,jdbcType=INTEGER},
+			<if test="bookBaseId != null">
+				#{bookBaseId,jdbcType=INTEGER},
 			</if>
 			<if test="isReservateAble != null">
 				#{isReservateAble,jdbcType=CHAR},
@@ -121,6 +114,44 @@
 			now()
 		</trim>
 	</insert>
+
+	<update id="update" parameterType="com.wtlib.base.pojo.BookBaseSupport">
+		update t_book_base_support
+		<set>
+			<if test="isReservateAble != null">
+				is_reservate_able = #{isReservateAble,jdbcType=CHAR},
+			</if>
+			<if test="isBorrowAble != null">
+				is_borrow_able = #{isBorrowAble,jdbcType=CHAR},
+			</if>
+			<if test="currentLeftBookNumber != null">
+				current_left_book_number =
+				#{currentLeftBookNumber,jdbcType=INTEGER},
+			</if>
+			<if test="currentReservateNumber != null">
+				current_reservate_number =
+				#{currentReservateNumber,jdbcType=INTEGER},
+			</if>
+			<if test="singleBookNumber != null">
+				single_book_number =
+				#{singleBookNumber,jdbcType=INTEGER},
+			</if>
+			<if test="creator != null">
+				creator = #{creator,jdbcType=INTEGER},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reviser != null">
+				reviser = #{reviser,jdbcType=INTEGER},
+			</if>
+			<if test="dataStatus != null">
+				data_status = #{dataStatus,jdbcType=VARCHAR},
+			</if>
+			update_time = now()
+		</set>
+	</update>
+
 
 	<update id="updateByBookId" parameterType="com.wtlib.base.pojo.BookBaseSupport">
 		update t_book_base_support
@@ -159,7 +190,7 @@
 		</set>
 		where
 
-		book_id = #{bookId,jdbcType=INTEGER}
+		book_base_id = #{bookBaseId,jdbcType=INTEGER}
 
 	</update>
 

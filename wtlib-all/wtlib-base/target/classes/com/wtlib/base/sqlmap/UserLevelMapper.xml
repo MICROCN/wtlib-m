@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.UserLevelMapper" >
+<mapper namespace="com.wtlib.dao.UserLevelMapper" >
 
   <resultMap id="UserLevelMap" type="com.wtlib.base.pojo.UserLevel" >
     <id column="id" property="id" jdbcType="INTEGER" />
@@ -16,11 +16,15 @@
   </resultMap>
 
 	<select id="selectAll" resultMap="UserLevelMap">
-		select * from t_user_level
+		select * from t_user_level where data_status = #{dataStatus}
+	</select>
+
+	<select id="selectById" resultMap="UserLevelMap">
+	    select * from t_user_level where id = #{id} and data_status = #{dataStatus}
 	</select>
 
   <delete id="deleteById" parameterType="java.lang.Integer" >
-	UPDATE t_user_level SET data_status = "000" WHERE id = 1
+	UPDATE t_user_level SET data_status = "000",reviser = #{reviser} WHERE id = 1
   </delete>
  
   <insert id="insert" parameterType="com.wtlib.base.pojo.UserLevel" >
@@ -77,7 +81,7 @@
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
       <if test="dataStatus != null" >
-        #{"001",jdbcType=CHAR},
+        "001",
       </if>
         now()
     </trim>

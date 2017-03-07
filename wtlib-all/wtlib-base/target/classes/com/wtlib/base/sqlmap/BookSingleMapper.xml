@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.base.dao.BookSingleMapper" >
+<mapper namespace="com.wtlib.dao.BookSingleMapper" >
   <resultMap id="BookSingleMap" type="com.wtlib.base.pojo.BookSingle" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="book_base_id" property="bookBaseId" jdbcType="INTEGER" />
@@ -18,15 +18,19 @@
     id, book_base_id, book_hash, current_owner, last_lender, last_lend_time, creator, 
     create_time, reviser, update_time, data_status
   </sql>
-  <select id="selectById" resultMap="BookSingleMap" parameterType="java.lang.Integer" >
+  <select id="selectById" resultMap="BookSingleMap">
     select 
     <include refid="comList" />
     from t_book_single
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and data_status = #{dataStatus}
   </select>
   <delete id="deleteById" parameterType="java.lang.Integer" >
-    
+    update t_book_single set data_status = "000",reviser = #{reviser} where id = #{id}
   </delete>
+  
+	<select id="findByHash" parameterType ="java.lang.String" resultMap="BookSingleMap">
+		select * from t_book_single where book_hash = #{hash} and  data_status = #{dataStatus}
+	</select>
  
   <insert id="insert" parameterType="com.wtlib.base.pojo.BookSingle" >
     insert into t_book_single
@@ -93,9 +97,9 @@
       now()
     </trim>
   </insert>
-  <update id="updateById" parameterType="com.wtlib.base.pojo.BookSingle" >
+  <update id="update" parameterType="com.wtlib.base.pojo.BookSingle" >
     update t_book_single
-    <set >
+    <set>
       <if test="bookBaseId != null" >
         book_base_id = #{bookBaseId,jdbcType=INTEGER},
       </if>
@@ -125,7 +129,7 @@
       </if>
         update_time = now()
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where book_hash = #{bookHash}
   </update>
   
 </mapper>

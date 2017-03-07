@@ -24,6 +24,8 @@ public class BookBase extends BaseEntity {
 
 	private String bookPublisher;
 
+	private Integer bookNum;
+	
 	private Integer bookPageNum;
 
 	private BigDecimal bookPrice;
@@ -92,5 +94,25 @@ public class BookBase extends BaseEntity {
 	public void setBookPrice(BigDecimal bookPrice) {
 		this.bookPrice = bookPrice;
 	}
+
+	public Integer getBookNum() {
+		return bookNum;
+	}
+
+	public void setBookNum(Integer bookNum) {
+		this.bookNum = bookNum;
+	}
+
+	@Override
+	public String toString() {
+		return "BookBase [id=" + id + ", bookTitle=" + bookTitle
+				+ ", bookCoverUrl=" + bookCoverUrl + ", bookDesc=" + bookDesc
+				+ ", bookWriter=" + bookWriter + ", bookPublisher="
+				+ bookPublisher + ", bookNum=" + bookNum + ", bookPageNum="
+				+ bookPageNum + ", bookPrice=" + bookPrice + "]";
+	}
+
+	
+	
 
 }

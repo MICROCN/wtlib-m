@@ -14,7 +14,7 @@ public class CreditInfo extends BaseEntity {
 
 	private String creditName;
 
-	private Integer miniUserLevelId;
+	private Integer miniUserLevel;
 
 	private String isPlus;
 
@@ -36,12 +36,12 @@ public class CreditInfo extends BaseEntity {
 		this.creditName = creditName == null ? null : creditName.trim();
 	}
 
-	public Integer getMiniUserLevelId() {
-		return miniUserLevelId;
+	public Integer getMiniUserLevel() {
+		return miniUserLevel;
 	}
 
-	public void setMiniUserLevelId(Integer miniUserLevelId) {
-		this.miniUserLevelId = miniUserLevelId;
+	public void setMiniUserLevel(Integer miniUserLevel) {
+		this.miniUserLevel = miniUserLevel;
 	}
 
 	public String getIsPlus() {
