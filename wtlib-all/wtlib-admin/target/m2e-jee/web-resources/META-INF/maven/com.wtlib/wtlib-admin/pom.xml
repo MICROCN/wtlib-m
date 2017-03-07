@@ -19,10 +19,6 @@
 			<artifactId>wtlib-base</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.wtlib</groupId>
-			<artifactId>wtlib-common</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 		</dependency>
