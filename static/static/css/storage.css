@@ -1,0 +1,77 @@
+body{
+    background: #eeeeee;
+}
+.container{
+    display:flex;
+    flex-direction:column;
+}
+.head{
+    background-color:#009688;
+    padding:15px 12px;
+    text-align:center;
+}
+.head-icon{
+    color:white;
+    font-size:24px;
+    line-height: 30px;
+    float:right;
+}
+.footer{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+.footer-menu{
+    position:relative;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    background-color: white;
+}
+.footer-icon{
+    color:#009688;
+    padding:15px;
+    font-size:24px;
+}
+.user-head{
+    font-size:18px;
+    color:white;
+    line-height:31px;
+}
+.book{
+    margin-top:10px;
+    background-color: white;
+}
+.book-list{
+    display:flex;
+    flex-direction: row;
+    border-bottom:#eeeeee solid 1px;
+    margin-left:18px
+}
+.check{
+    margin:20px;
+}
+.book-name{
+    padding:15px;
+}
+.check-div{
+    padding-right:150px;
+    margin:15px;
+}
+.check-all{
+    padding-left:20px;
+}
+#total{
+    margin:15px 0;
+}
+#submit{
+    margin:10px;
+    padding:5px 15px;
+    background-color:#FFC107;
+    border-radius: 0.2em;
+}
+.book-info{
+    display:flex;
+    background-color: white;
+    border-bottom:1px solid #eeeeee
+}
