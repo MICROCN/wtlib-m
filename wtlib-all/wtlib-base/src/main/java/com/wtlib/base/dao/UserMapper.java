@@ -21,4 +21,6 @@ public interface UserMapper extends BaseDao<User> {
 
 	UserWebDto selectAllById(@Param("userId")Integer userId,@Param("dataStatus") String dataStatus);
 
+	Integer confirmAdmin(@Param("user")User user, @Param("dataStatus")String code);
+
 }

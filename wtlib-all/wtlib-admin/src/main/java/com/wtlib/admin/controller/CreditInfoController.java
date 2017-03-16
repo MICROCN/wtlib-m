@@ -27,7 +27,7 @@ import  com.wtlib.base.service.FeedBackService;
  * @date 2017年1月22日 下午2:39:21
  */
 @Controller
-@RequestMapping("/creditinfo/")
+@RequestMapping("/admin")
 public class CreditInfoController {
 	@Autowired
 	private CreditInfoService creditInfoService;
@@ -35,7 +35,7 @@ public class CreditInfoController {
 	Logger log = Logger.getLogger(FeedBackController.class);
 	
 	//user
-	@RequestMapping("/add")
+	@RequestMapping("/add/creditinfo")
 	@ResponseBody
 	public Message addCreditInfo(@RequestBody CreditInfo info, HttpSession session) {
 		String id = session.getAttribute("id").toString();// 以后会改
@@ -56,7 +56,7 @@ public class CreditInfoController {
 		}
 	}
 
-	@RequestMapping("/delete")
+	@RequestMapping("/delete/creditinfo")
 	@ResponseBody
 	public Message deleteCreditInfo(@RequestParam("id") Integer id,HttpSession session) {
 		String reviser = session.getAttribute("id").toString();// 以后会改
@@ -69,7 +69,7 @@ public class CreditInfoController {
 		}
 	}
 
-	@RequestMapping("/update")
+	@RequestMapping("/update/creditinfo")
 	public Message updateCreditInfo(@RequestBody CreditInfo info, HttpSession session){
 		String id = session.getAttribute("id").toString();// 以后会改
 		Integer miniLevel = info.getMiniUserLevel();
@@ -89,7 +89,7 @@ public class CreditInfoController {
 		}
 	}
 
-	@RequestMapping("/get")
+	@RequestMapping("/get/creditinfo")
 	public Message getCreditInfo() {
 		try {
 			List<CreditInfo> creditInfoList= creditInfoService.selectAll(DataStatusEnum.NORMAL_USED.getCode());

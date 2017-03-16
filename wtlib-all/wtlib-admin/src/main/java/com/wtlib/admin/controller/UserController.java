@@ -26,7 +26,8 @@ import com.wtlib.base.service.UserService;
 import com.wtlib.common.utils.IpUtils;
 import com.wtlib.base.vo.LoginVo;
 
-public class UserCenterController {
+@RequestMapping("/admin")
+public class UserController {
 
 	@Resource(name = "userService")
 	UserService userService;
@@ -35,39 +36,29 @@ public class UserCenterController {
 	@Resource(name = "userLevelService")
 	private UserLevelService userLevelService;
 
-	Logger log = Logger.getLogger(UserCenterController.class);
+	Logger log = Logger.getLogger(UserController.class);
 
 	// login
 	@RequestMapping("/login")
-	public Message login(@RequestBody LoginVo login, HttpSession session,
-			HttpServletRequest request) {
-		String password = login.getPassword();
-		String loginId = login.getLoginId();
-		String code = login.getCode();
-		String realCode = session.getAttribute("generateCode").toString();
-		if (code != realCode) {
-			return Message.error(Code.PARAMATER, "验证码错误！");
-		}
+	public Message login(@RequestBody User user,HttpSession session,HttpServletRequest request) {
+		String password = user.getPassword();
+		String loginId = user.getLoginId();
 		// 其他的null都提示的是不得为空，只有这里会记录ip的原因是防止入侵。
-		if (password == null || code == null || loginId == null) {
+		if (password == null || loginId == null) {
 			// 恶意侵入，记录ip，并禁止其再次登录
 			String ip = IpUtils.getIp(request);
 			log.error("ip:" + JSON.toJSON(ip) + "\n\t username:"
-					+ login.getLoginId());
+					+ user.getLoginId());
 			return Message.error(Code.FATAL_ERROR, "别搞事情", ip);
 		}
 		if (password.matches("^.*[\\s]+.*$")) {
 			return Message.error(Code.PARAMATER, "密码不能包含空格、制表符、换页符等空白字符");
 		}
-		if (code.matches("^.*[\\s]+.*$")) {
-			return Message.error(Code.PARAMATER, "验证码不能包含空格、制表符、换页符等空白字符");
-		}
 		if (loginId.matches("^.*[\\s]+.*$")) {
 			return Message.error(Code.PARAMATER, "昵称不能包含空格、制表符、换页符等空白字符");
 		}
-		User user = new User(loginId, password);
 		try {
-			Integer id = userService.confirm(user);
+			Integer id = userService.confirmAdmin(user);
 			if (id != null) {
 				session.setAttribute("user", id);// 这里不安全。肯定要改。要么用https要么就加密
 				session.setMaxInactiveInterval(60 * 30);
@@ -181,8 +172,7 @@ public class UserCenterController {
 		}
 	}
 
-	// userinfo
-
+	//删除info同时会删除user
 	@RequestMapping("/delete/info")
 	@ResponseBody
 	public Message deleteUserInfo(@RequestParam("id") Integer id,

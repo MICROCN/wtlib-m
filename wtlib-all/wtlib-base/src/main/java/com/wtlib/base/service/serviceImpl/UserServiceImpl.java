@@ -52,20 +52,26 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int insertBatch(List<User> entityList) throws Exception {
-		return 0;
-	}
-
-	@Override
 	public User selectById(Object id,String dataStatus) throws Exception {
 		User user= userMapper.selectById(id,DataStatusEnum.NORMAL_USED.getCode());
 		return user;
 	}
 
 	@Override
+	public Integer confirmAdmin(User user) {
+		Integer id= userMapper.confirmAdmin(user,DataStatusEnum.NORMAL_USED.getCode());
+		return id;
+	}
+	
+	@Override
 	public Integer confirm(User user) {
 		Integer id= userMapper.confirm(user,DataStatusEnum.NORMAL_USED.getCode());
 		return id;
+	}
+
+	@Override
+	public int insertBatch(List<User> entityList) throws Exception {
+		return 0;
 	}
 	
 	@Override
@@ -89,5 +95,6 @@ public class UserServiceImpl implements UserService {
 		UserWebDto user= userMapper.selectAllById(userid,dataStatus);
 		return user;
 	}
+
 
 }

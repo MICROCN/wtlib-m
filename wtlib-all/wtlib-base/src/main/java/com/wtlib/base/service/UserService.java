@@ -22,5 +22,7 @@ public interface UserService extends BaseService<User> {
 
 	public UserWebDto selectAllById(Integer userid,String dataStatus);
 
+	public Integer confirmAdmin(User user);
+
 
 }
