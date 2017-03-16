@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wtlib.dao.UserInfoMapper">
-
-	<resultMap id="UserInfoMap" type="com.wtlib.base.pojo.UserInfo">
-		<id column="id" property="id" jdbcType="INTEGER" />
-		<result column="user_id" property="userId" jdbcType="INTEGER" />
-		<result column="user_name" property="userName" jdbcType="CHAR" />
-		<result column="user_level_id" property="userLevelId" jdbcType="INTEGER" />
-		<result column="current_credit_value" property="currentCreditValue"
-			jdbcType="INTEGER" />
-		<result column="creator" property="creator" jdbcType="INTEGER" />
-		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-		<result column="reviser" property="reviser" jdbcType="INTEGER" />
-		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-		<result column="data_status" property="dataStatus" jdbcType="CHAR" />
-	</resultMap>
+  <resultMap id="BaseResultMap" type="com.wtlib.pojo.UserInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="TINYINT" />
+    <result column="hometown" property="hometown" jdbcType="VARCHAR" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="user_level_id" property="userLevelId" jdbcType="INTEGER" />
+    <result column="current_credit_value" property="currentCreditValue" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="reviser" property="reviser" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+  </resultMap>
 
 	<update id="updateLevel">
 
@@ -36,91 +38,136 @@
 		select *  from t_user_info where user_id = #{id} and data_status = #{dataStatus}
 	</select>
 
-	<insert id="insert" parameterType="com.wtlib.base.pojo.UserInfo">
-		insert into t_user_info
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-
-			<if test="userId != null">
-				user_id,
-			</if>
-			<if test="userName != null">
-				user_name,
-			</if>
-			<if test="userLevelId != null">
-				user_level_id,
-			</if>
-			<if test="currentCreditValue != null">
-				current_credit_value,
-			</if>
-			<if test="creator != null">
-				creator,
-			</if>
-			<if test="reviser != null">
-				reviser,
-			</if>
-			<if test="updateTime != null">
-				update_time,
-			</if>
-			data_status,
-			create_time
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-
-			<if test="userId != null">
-				#{userId,jdbcType=INTEGER},
-			</if>
-			<if test="userName != null">
-				#{userName,jdbcType=CHAR},
-			</if>
-			<if test="userLevelId != null">
-				#{userLevelId,jdbcType=INTEGER},
-			</if>
-			<if test="currentCreditValue != null">
-				#{currentCreditValue,jdbcType=INTEGER},
-			</if>
-			<if test="creator != null">
-				#{creator,jdbcType=INTEGER},
-			</if>
-			<if test="reviser != null">
-				#{reviser,jdbcType=INTEGER},
-			</if>
-			<if test="updateTime != null">
-				#{updateTime,jdbcType=TIMESTAMP},
-			</if>
-			"001",
-			now()
-		</trim>
-	</insert>
-	<update id="update" parameterType="com.wtlib.base.pojo.UserInfo">
-		update t_user_info
-		<set>
-			<if test="userId != null">
-				user_id = #{userId,jdbcType=INTEGER},
-			</if>
-			<if test="userLevelId != null">
-				user_level_id =
-				#{userLevelId,jdbcType=INTEGER},
-			</if>
-			<if test="currentCreditValue != null">
-				current_credit_value =
-				#{currentCreditValue,jdbcType=INTEGER},
-			</if>
-			<if test="creator != null">
-				creator = #{creator,jdbcType=INTEGER},
-			</if>
-			<if test="createTime != null">
-				create_time = #{createTime,jdbcType=TIMESTAMP},
-			</if>
-			<if test="reviser != null">
-				reviser = #{reviser,jdbcType=INTEGER},
-			</if>
-			<if test="dataStatus != null">
-				data_status = #{dataStatus,jdbcType=CHAR},
-			</if>
-			update_time = now()
-		</set>
-		where id = #{id,jdbcType=INTEGER}
-	</update>
+	 <insert id="insert" parameterType="com.wtlib.pojo.UserInfo" >
+    insert into t_user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="photoUrl != null" >
+        photo_url,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="hometown != null" >
+        hometown,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="userLevelId != null" >
+        user_level_id,
+      </if>
+      <if test="currentCreditValue != null" >
+        current_credit_value,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="reviser != null" >
+        reviser,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dataStatus != null" >
+        data_status,
+      </if>
+        create_time
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="photoUrl != null" >
+        #{photoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="hometown != null" >
+        #{hometown,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevelId != null" >
+        #{userLevelId,jdbcType=INTEGER},
+      </if>
+      <if test="currentCreditValue != null" >
+        #{currentCreditValue,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="reviser != null" >
+        #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataStatus != null" >
+        "001"
+      </if>
+      	now()
+    </trim>
+  </insert>
+<update id="update" parameterType="com.wtlib.pojo.UserInfo" >
+    update t_user_info
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="photoUrl != null" >
+        photo_url = #{photoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="hometown != null" >
+        hometown = #{hometown,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userLevelId != null" >
+        user_level_id = #{userLevelId,jdbcType=INTEGER},
+      </if>
+      <if test="currentCreditValue != null" >
+        current_credit_value = #{currentCreditValue,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reviser != null" >
+        reviser = #{reviser,jdbcType=INTEGER},
+      </if>
+      <if test="dataStatus != null" >
+        data_status = #{dataStatus,jdbcType=CHAR},
+      </if>
+      update_time = now()
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 	<select id="selectByUsername" parameterType="java.lang.String"
 		resultType="com.wtlib.base.dto.UserWebDto">

@@ -1,71 +1,145 @@
-package com.wtlib.base.pojo;
+package com.wtlib.pojo;
 
-/**
- * 用户附加信息实体
- * 
- * @author zongzi
- * @date 2017年1月21日 下午6:02:04
- */
-public class UserInfo extends BaseEntity {
-	private static final long serialVersionUID = 8929791798236546341L;
+import java.util.Date;
 
-	private Integer id;
+public class UserInfo {
+    private Integer id;
 
-	private Integer userId;
+    private Integer userId;
 
-	private Integer userLevelId;
+    private String photoUrl;
 
-	private Integer currentCreditValue;
+    private Byte sex;
 
-	private String userName;
+    private String hometown;
 
-	public UserInfo(){}
-	
-	public UserInfo(Integer userId, String userName) {
-		this.userId = userId;
-		this.userName = userName;
-		userLevelId = 1;
-		currentCreditValue = 0;
-	}
+    private Date birthday;
 
-	public Integer getId() {
-		return id;
-	}
+    private String username;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    private Integer userLevelId;
 
-	public Integer getUserId() {
-		return userId;
-	}
+    private Integer currentCreditValue;
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
+    private Integer creator;
 
-	public Integer getCurrentCreditValue() {
-		return currentCreditValue;
-	}
+    private Date createTime;
 
-	public void setCurrentCreditValue(Integer currentCreditValue) {
-		this.currentCreditValue = currentCreditValue;
-	}
+    private Integer reviser;
 
-	public String getUserName() {
-		return userName;
-	}
+    private Date updateTime;
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    private String dataStatus;
 
-	public Integer getUserLevelId() {
-		return userLevelId;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setUserLevelId(Integer userLevelId) {
-		this.userLevelId = userLevelId;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl == null ? null : photoUrl.trim();
+    }
+
+    public Byte getSex() {
+        return sex;
+    }
+
+    public void setSex(Byte sex) {
+        this.sex = sex;
+    }
+
+    public String getHometown() {
+        return hometown;
+    }
+
+    public void setHometown(String hometown) {
+        this.hometown = hometown == null ? null : hometown.trim();
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
+    }
+
+    public Integer getUserLevelId() {
+        return userLevelId;
+    }
+
+    public void setUserLevelId(Integer userLevelId) {
+        this.userLevelId = userLevelId;
+    }
+
+    public Integer getCurrentCreditValue() {
+        return currentCreditValue;
+    }
+
+    public void setCurrentCreditValue(Integer currentCreditValue) {
+        this.currentCreditValue = currentCreditValue;
+    }
+
+    public Integer getCreator() {
+        return creator;
+    }
+
+    public void setCreator(Integer creator) {
+        this.creator = creator;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getReviser() {
+        return reviser;
+    }
+
+    public void setReviser(Integer reviser) {
+        this.reviser = reviser;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getDataStatus() {
+        return dataStatus;
+    }
+
+    public void setDataStatus(String dataStatus) {
+        this.dataStatus = dataStatus == null ? null : dataStatus.trim();
+    }
 }
