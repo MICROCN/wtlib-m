@@ -7,14 +7,12 @@
     <link rel="stylesheet" type="text/css" href="../../static/css/ico.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
     <link rel="stylesheet" type="text/css" href="../../static/css/myself.css">
-
 </head>
 <body>
     <div class="head">
-        <span class="icon-close head-icon"></span>
-        <!--<span class="icon-back head-icon"></span>-->
-        <span class="user-head">用户中心</span>
-        <!--<span class="head-icon icon-delete"></span>-->
+        <span class="icon-back head-icon"></span>
+        <span class="user-head margin-center">用户中心</span>
+        <span class="head-icon icon-delete"></span>
         <span class="icon-check head-icon"></span>
     </div>
     <div class="container">
@@ -62,59 +60,70 @@
     </div>
     <div class="history">
         <div class="list-info">
-            <img class="book-photo" src="../../static/img/timg.jpg"/>
-            <div class="book-text">
-                <div>书名：疯狂java讲义</div>
-                <div>时间：2017-04-04 15:38:51</div>
-                <div> - 2017-03-05 15:38:51</div>
-                <div>状态：已归还</div>
+            <div class="photo-info">
+                <img class="book-photo" src="../../static/img/timg.jpg"/>
+                <div>
+                    <div class="book-name">疯狂java讲义</div>
+                    <div class="book-time">2017-04-04 - 2017-03-05</div>
+                    <div class="book-status">已归还</div>
+                </div>
+            </div>
+            <div class="book-extra">
+                <div class="advice-btn">评价</div>
             </div>
         </div>
         <div class="list-info">
-            <img class="book-photo" src="../../static/img/timg.jpg"/>
-            <div class="book-text">
-                <div>书名：疯狂java讲义</div>
-                <div>时间：2017-04-04 15:38:51</div>
-                <div> - 2017-03-05 15:38:51</div>
-                <div>状态：已归还</div>
+            <div class="photo-info">
+                <img class="book-photo" src="../../static/img/timg.jpg"/>
+                <div>
+                    <div class="book-name">疯狂java讲义</div>
+                    <div class="book-time">2017-04-04 - 2017-03-05</div>
+                    <div class="book-status">已归还</div>
+                </div>
             </div>
-        </div>
-        <div class="list-info">
-            <img class="book-photo" src="../../static/img/timg.jpg"/>
-            <div class="book-text">
-                <div>书名：疯狂java讲义</div>
-                <div>时间：2017-04-04 15:38:51</div>
-                <div> - 2017-03-05 15:38:51</div>
-                <div>状态：已归还</div>
-            </div>
-        </div>
-        <div class="list-info">
-            <img class="book-photo" src="../../static/img/timg.jpg"/>
-            <div class="book-text">
-                <div>书名：疯狂java讲义</div>
-                <div>时间：2017-04-04 15:38:51</div>
-                <div> - 2017-03-05 15:38:51</div>
-                <div>状态：已归还</div>
+            <div class="book-extra">
+                <div class="advice-btn">评价</div>
             </div>
         </div>
     </div>
     <div class="return-back">
         <div class="list-info">
-            <img class="book-photo" src="../../static/img/timg.jpg"/>
-            <div class="book-text">
-                <div>书名：疯狂java讲义</div>
-                <div>归还日期：2017-03-05</div>
-                <div id="back">确认</div>
+            <div class="photo-info">
+                <img class="book-photo" src="../../static/img/timg.jpg"/>
+                <div>
+                    <div class="book-name">书名：疯狂java讲义</div>
+                    <div class="book-time">归还日期：2017-04-04</div>
+                </div>
+            </div>
+            <div class="book-extra">
+                <div class="confirm-btn">确认</div>
+            </div>
+        </div>
+    </div>
+    <div class="reservation">
+        <div class="list-info">
+            <div class="photo-info">
+                <img class="book-photo" src="../../static/img/timg.jpg"/>
+                <div>
+                    <div class="book-name">疯狂java讲义</div>
+                    <div class="book-status">作者：达科特</div>
+                    <div class="book-status">出版社：清华大学出版社</div>
+                    <div class="book-time">出版年：2015-6-9</div>
+                </div>
+            </div>
+            <div class="book-extra">
+                <div class="reservation-btn">取消预约</div>
             </div>
         </div>
     </div>
     <div class="advice">
         <div class="list-info">
-            <img class="book-photo" src="../../static/img/timg.jpg"/>
-            <div class="book-text">
-                <div>疯狂java讲义</div>
-                <div>作者：哈哈哈</div>
-                <div>出版社：</div>
+            <div class="photo-info">
+                <img class="book-photo" src="../../static/img/timg.jpg"/>
+                <div>
+                    <div class="book-name">疯狂java讲义</div>
+                    <div class="book-time">2017-04-04 - 2017-03-05</div>
+                </div>
             </div>
         </div>
         <div class="area-mark">
@@ -131,5 +140,7 @@
             <a class="icon-settings footer-icon" href="settings.html"></a>
         </div>
     </div>
+    <script src="../../static/js/jquery-1.3.2.min.js"></script>
+    <script src="../../static/js/myself.js"></script>
 </body>
 </html>

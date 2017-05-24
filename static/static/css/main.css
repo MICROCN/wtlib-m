@@ -26,3 +26,6 @@ a {
 .clear{
     clear:both;
 }
+.margin-center{
+    margin:0 auto;
+}

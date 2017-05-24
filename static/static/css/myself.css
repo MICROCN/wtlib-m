@@ -4,14 +4,13 @@ body{
 .container{
     display:flex;
     flex-direction:column;
-    display:none;
 }
 .head{
     display:flex;
     flex-direction: row;
     justify-content:space-between;;
     background-color:#009688;
-    padding:15px 12px;
+    padding:10px 12px;
 }
 .head-icon{
     color:white;
@@ -102,34 +101,25 @@ body{
     padding:15px;
     font-size:24px;
 }
-.history{
-    display:none
-}
-.list-info{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: white;
-    border-bottom: solid 1px #eeeeee;
+.history,.advice,.return-back,.reservation{
+    display:none;
 }
 .book-photo{
     width:80px;
     height:80px;
-    padding:10px 0;
+    padding:10px 10px;
     border-radius: 50%;
+    display:inline-block;
 }
 .book-text{
     padding-top:10px;
 }
-#back{
+.confirm-btn{
     margin:10px 0 10px 90px;
     padding:5px 10px;
     background-color:#FFC107;
     border-radius: 0.2em;
     text-align:center;
-}
-.return-back{
-    display: none;
 }
 .area-mark{
     padding:10px;
@@ -141,4 +131,52 @@ body{
 .area{
     width:100%;
     height:100px;
+    margin-top:10px;
+    border:1px #a9a9aa solid;
+}
+.icon-back,.icon-delete,.icon-check{
+    display:none;
+}
+.book-head{
+    display:flex;
+    justify-content:space-between;
+}
+.list-info{
+    background-color: white;
+    margin-top:10px;
+}
+.photo-info{
+    display:flex;
+    border-bottom: solid 1px #eeeeee;
+}
+.book-name{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    width:200px;
+    display:inline-block;
+    vertical-align:top;
+    padding:10px 0;
+    font-size:1em;
+}
+.book-status{
+    font-size:smaller;
+    color:#808080;
+}
+.book-extra{
+    display:flex;
+    justify-content:flex-end;
+}
+.book-time{
+    font-size:smaller;
+    color:#808080;
+    padding:5px 0;
+}
+.advice-btn,.reservation-btn,.confirm-btn{
+    margin:5px;
+    padding:3px 10px;
+    background-color:#FFC107;
+    border-radius: 0.2em;
+    text-align:center;
+    color:white;
 }

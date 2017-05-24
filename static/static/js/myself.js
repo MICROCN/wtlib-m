@@ -1,33 +1,41 @@
-$("#history-div").click(function (){
-    $(".content").css('display','none');
+$("#history").click(function (){
+    $(".container").css('display','none');
     $(".history").css('display',"block");
-    $("#return").css("display","block");
+    $(".icon-back").css("display","block");
+    $(".user-head").html("借阅历史")
 });
-$("#return").click(function(){
-    $(".content").css('display','block');
+$(".icon-back").click(function(){
+    $(".container").css('display','flex');
+    $(".advice").css('display',"none");
     $(".history").css('display',"none");
-    $("#return").css("display","none");
-    $(".management").css("display","none");
-    $(".order").css("display","none");
-    $(".back").css("display","none");
-    $("#trash").css("display","none");
-    $(".settings").css("display","none");
+    $(".icon-back").css("display","none");
+    $(".reservation").css("display","none");
+    $(".return-back").css("display","none");
+    $(".icon-check").css('display',"none");
+    $(".user-head").html("用户中心")
 })
-$("#back-div").click(function(){
-    $(".content").css('display','none');
-    $(".back").css('display',"block");
-    $("#return").css("display","block");
+$("#turn-back").click(function(){
+    $(".user-head").html("借阅归还")
+    $(".return-back").css('display','block');
+    $(".container").css('display','none');
+    $(".icon-back").css("display","block");
+    $(".history").css('display',"none");
 })
-$("#order-div").click(function(){
-    $(".content").css('display','none');
-    $(".order").css('display',"block");
-    $("#return").css("display","block");
-    $("#trash").css("display","block");
+$("#reservation").click(function(){
+    $(".user-head").html("我的预约")
+    $(".reservation").css('display','block');
+    $(".container").css('display','none');
+    $(".icon-back").css("display","block");
 })
-$("#settings-div").click(function(){
-    $(".content").css('display','none');
-    $(".settings").css('display',"block");
-    $("#return").css("display","block");
+$(".advice-btn").click(function(){
+    $(".advice").css('display','block');
+    $(".container").css('display','none');
+    $(".history").css('display',"none");
+    $(".icon-back").css("display","block");
+    $(".reservation").css("display","none");
+    $(".return-back").css("display","none");
+    $(".icon-check").css('display',"block");
+    $(".user-head").html("我的评价")
 })
 $("#trash").click(function(){
     var box = $("input:checkbox");
@@ -35,9 +43,4 @@ $("#trash").click(function(){
         if(true==box[i].checked)
             $(box[i]).parent().parent().remove();
     };
-})
-$("#management-div").click(function(){
-    $(".content").css('display','none');
-    $(".management").css('display',"block");
-    $("#return").css("display","block");
 })

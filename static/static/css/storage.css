@@ -55,7 +55,6 @@ body{
     padding:15px;
 }
 .check-div{
-    padding-right:150px;
     margin:15px;
 }
 .check-all{
@@ -73,5 +72,9 @@ body{
 .book-info{
     display:flex;
     background-color: white;
-    border-bottom:1px solid #eeeeee
+    border-bottom:1px solid #eeeeee;
+    justify-content: space-between;
+}
+.btn-div{
+    display:inherit
 }
