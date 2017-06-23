@@ -73,7 +73,7 @@ public class BookReservationServiceImpl implements BookReservationService {
 				.selectBookBaseSupportByBookBaseId(bookBaseId,
 						DataStatusEnum.NORMAL_USED.getCode());
 
-		Assert.isTrue(null != bookBaseSupport, "null bookId");
+		Assert.isTrue(null != bookBaseSupport, "null BookBaseId");
 
 		String isReservateAble = bookBaseSupport.getIsReservateAble();
 
@@ -104,7 +104,7 @@ public class BookReservationServiceImpl implements BookReservationService {
 
 		// 更新图书基础信息
 		Integer updateBookBaseSupport = bookBaseSupportService
-				.updateByBookId(bookBaseSupportTemp);
+				.updateByBookBaseId(bookBaseSupportTemp);
 
 		Assert.isTrue(
 				updateBookBaseSupport == 1,
@@ -113,7 +113,7 @@ public class BookReservationServiceImpl implements BookReservationService {
 
 		// 添加预约记录
 		BookReservation bookReservation = new BookReservation();
-		bookReservation.setBookId(bookBaseId);
+		bookReservation.setBookBaseId(bookBaseId);
 		bookReservation.setUserId(userId);
 		bookReservation.setCreator(userId);
 		int insertBookReservation = bookReservationMapper

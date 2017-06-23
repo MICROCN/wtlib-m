@@ -7,8 +7,10 @@
     <meta name="description" content="图书管理系统"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/main.css"/>
     <link rel="stylesheet" href="../css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/ace.min.css"/>
+    <link rel="stylesheet" href="../css/add_book.css"/>
     <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -82,14 +84,14 @@
                         <b class="arrow icon-angle-down"></b>
                     </a>
                     <ul class="submenu">
-                        <li>
+                        <li class="active">
                             <a href="elements.html">
                                 <i class="icon-double-angle-right"></i>
                                 添加图书
                             </a>
                         </li>
 
-                        <li class="active">
+                        <li>
                             <a href="buttons.html">
                                 <i class="icon-double-angle-right"></i>
                                 图书列表
@@ -183,28 +185,35 @@
                                 <div class="tabbable">
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-4">
-                                            <input type="file" />
+                                            <div id="uploadBox">
+                                            </div>
+                                            <div id="template" class="hidden">
+                                                <li>
+                                                    <img src=""/>
+                                                    <span class="progress"></span>
+                                                    <span class="percentage"></span>
+                                                </li>
+                                            </div>
                                         </div>
 
                                         <div class="vspace-xs"></div>
 
                                         <div class="col-xs-12 col-sm-8">
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">Username</label>
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">书名</label>
 
                                                 <div class="col-sm-8">
-                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-username" placeholder="Username" value="alexdoe" />
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-username" placeholder="书名" />
                                                 </div>
                                             </div>
 
                                             <div class="space-4"></div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-first">Name</label>
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">出版社</label>
 
                                                 <div class="col-sm-8">
-                                                    <input class="input-small" type="text" id="form-field-first" placeholder="First Name" value="Alex" />
-                                                    <input class="input-small" type="text" id="form-field-last" placeholder="Last Name" value="Doe" />
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-" placeholder="出版社" />
                                                 </div>
                                             </div>
                                         </div>
@@ -220,6 +229,7 @@
 </div><!-- /.main-container -->
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/add_book.js"></script>
 <script src="../js/ace.min.js"></script>
 </body>
 </html>

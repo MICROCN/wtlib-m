@@ -24,7 +24,6 @@ import com.wtlib.base.service.UserInfoService;
 import com.wtlib.base.service.UserLevelService;
 import com.wtlib.base.service.UserService;
 import com.wtlib.common.utils.IpUtils;
-import com.wtlib.base.vo.LoginVo;
 
 @RequestMapping("/user")
 public class UserCenterController {
@@ -113,7 +112,7 @@ public class UserCenterController {
 	@ResponseBody
 	public Message updateUserInfo(@RequestBody UserInfo userInfo,
 			HttpSession session, HttpServletRequest request) {
-		String username = userInfo.getUserName();
+		String username = userInfo.getUsername();
 		// 下面是为了防止有人恶意篡改等级和积分，只要他们传过来为空即可。
 		Integer level = userInfo.getUserLevelId();
 		Integer value = userInfo.getCurrentCreditValue();
@@ -122,7 +121,7 @@ public class UserCenterController {
 			// 恶意侵入，记录ip，并禁止其再次登录
 			String ip = IpUtils.getIp(request);
 			log.error("ip:" + JSON.toJSON(ip) + "\n\t username:"
-					+ userInfo.getUserName() + "\n\t id:" + id);
+					+ userInfo.getUsername() + "\n\t id:" + id);
 			return Message.error(Code.FATAL_ERROR, "别搞事情", ip);
 		}
 		try {

@@ -13,10 +13,6 @@ public class LabelInfo {
 
     private Date createTime;
 
-    private Integer reviser;
-
-    private Date updateTime;
-
     private String dataStatus;
 
     public Integer getId() {
@@ -59,22 +55,6 @@ public class LabelInfo {
         this.createTime = createTime;
     }
 
-    public Integer getReviser() {
-        return reviser;
-    }
-
-    public void setReviser(Integer reviser) {
-        this.reviser = reviser;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
-
     public String getDataStatus() {
         return dataStatus;
     }
@@ -82,4 +62,13 @@ public class LabelInfo {
     public void setDataStatus(String dataStatus) {
         this.dataStatus = dataStatus == null ? null : dataStatus.trim();
     }
+
+	@Override
+	public String toString() {
+		return "LabelInfo [id=" + id + ", userId=" + userId + ", value="
+				+ value + ", creator=" + creator + ", createTime=" + createTime
+				+ ", dataStatus=" + dataStatus + "]";
+	}
+    
+    
 }

@@ -13,7 +13,7 @@ public class BookReservation extends BaseEntity {
 
 	private Integer userId;
 
-	private Integer bookId;
+	private Integer bookBaseId;
 
 	public Integer getId() {
 		return id;
@@ -31,12 +31,12 @@ public class BookReservation extends BaseEntity {
 		this.userId = userId;
 	}
 
-	public Integer getBookId() {
-		return bookId;
+	public Integer getBookBaseId() {
+		return bookBaseId;
 	}
 
-	public void setBookId(Integer bookId) {
-		this.bookId = bookId;
+	public void setBookBaseId(Integer bookBaseId) {
+		this.bookBaseId = bookBaseId;
 	}
 
 }

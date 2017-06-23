@@ -8,7 +8,9 @@ import com.wtlib.base.pojo.LabelInfo;
 
 public interface LabelInfoService extends BaseService<LabelInfo> {
 
-	List<LabelInfo> selectByBaseId(Integer id,String dataStatus);
+	List<LabelInfo> selectByBaseId(Integer id,String dataStatus) throws Exception;
+
+ 	Integer insert(LabelInfo info, Integer infoId) throws Exception;
 
 
 }

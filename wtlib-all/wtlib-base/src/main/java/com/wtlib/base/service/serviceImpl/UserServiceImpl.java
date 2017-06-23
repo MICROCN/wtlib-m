@@ -45,10 +45,10 @@ public class UserServiceImpl implements UserService {
 	public Integer insert(User user) throws Exception {
 		String loginId = user.getLoginId();
 		Integer creator= user.getCreator();
-		UserInfo userInfo = new UserInfo(creator,loginId);
-		int count= userInfoService.insert(userInfo);
-		int num= userMapper.insert(user);
-		return num;
+		Integer id= userMapper.insert(user);
+		UserInfo userInfo = new UserInfo(creator,id);
+		Integer count= userInfoService.insert(userInfo);
+		return count;
 	}
 
 	@Override

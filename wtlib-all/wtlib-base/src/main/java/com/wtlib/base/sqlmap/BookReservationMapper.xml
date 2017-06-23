@@ -4,7 +4,7 @@
   <resultMap id="BookReservationMap" type="com.wtlib.base.pojo.BookReservation" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="book_id" property="bookId" jdbcType="INTEGER" />
+    <result column="book_base_id" property="bookBaseId" jdbcType="INTEGER" />
     <result column="creator" property="creator" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="reviser" property="reviser" jdbcType="INTEGER" />
@@ -12,7 +12,7 @@
     <result column="data_status" property="dataStatus" jdbcType="CHAR" />
   </resultMap>
   <sql id="comList" >
-    id, user_id, book_id, creator, create_time, reviser, update_time, data_status
+    id, user_id, book_base_id, creator, create_time, reviser, update_time, data_status
   </sql>
   <select id="selectById" resultMap="BookReservationMap" parameterType="java.lang.Integer" >
     select 
@@ -30,8 +30,8 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="bookId != null" >
-        book_id,
+      <if test="book_base_id != null" >
+        book_base_id,
       </if>
       <if test="creator != null" >
         creator,
@@ -51,8 +51,8 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="bookId != null" >
-        #{bookId,jdbcType=INTEGER},
+      <if test="bookBaseId != null" >
+        #{bookBaseId,jdbcType=INTEGER},
       </if>
       <if test="creator != null" >
         #{creator,jdbcType=INTEGER},
@@ -77,8 +77,8 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="bookId != null" >
-        book_id = #{bookId,jdbcType=INTEGER},
+      <if test="bookBaseId != null" >
+        book_base_id = #{bookBaseId,jdbcType=INTEGER},
       </if>
       <if test="creator != null" >
         creator = #{creator,jdbcType=INTEGER},

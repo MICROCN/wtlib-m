@@ -1,4 +1,4 @@
-package com.wtlib.pojo;
+package com.wtlib.base.pojo;
 
 import java.util.Date;
 
@@ -31,7 +31,12 @@ public class UserInfo {
 
     private String dataStatus;
 
-    public Integer getId() {
+    public UserInfo(Integer creator, Integer userId) {
+    	this.creator = creator;
+    	this.userId = userId;
+	}
+
+	public Integer getId() {
         return id;
     }
 

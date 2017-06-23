@@ -13,36 +13,38 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.Message;
 import com.alibaba.fastjson.JSON;
-import  com.wtlib.base.constants.Code;
-import  com.wtlib.base.pojo.LabelInfo;
-import  com.wtlib.base.service.LabelInfoService;
+import com.wtlib.base.constants.Code;
+import com.wtlib.base.pojo.LabelInfo;
+import com.wtlib.base.service.LabelInfoService;
+import com.wtlib.base.vo.LabelPack;
 
 @RequestMapping("/user")
 public class LabelController {
 
 	@Autowired
 	private LabelInfoService labelInfoService;
-	
+
 	Logger log = Logger.getLogger(LabelController.class);
-	
-	//user
+
+	// user
 	@RequestMapping("/add/label")
 	@ResponseBody
-	public Message addLabel(@RequestBody List<LabelInfo> infoList, HttpSession session) {
+	public Message addLabel(@RequestBody LabelPack pack, HttpSession session) {
 		String id = session.getAttribute("id").toString();// 以后会改
-		for(LabelInfo info : infoList){
-		    String value = info.getValue();
-			if (value == null) {
-				return Message.error(Code.PARAMATER, "不得为空");
-			}
-			info.setCreator(new Integer(id));
-			info.setUserId(new Integer(id));
-			try {	
-				labelInfoService.insert(info);
-			} catch (Exception e) {
-				log.error(JSON.toJSONString(info) + "\n\t" + e.toString());
-				return Message.error(Code.ERROR_CONNECTION, "无法插入数据");
-			}
+		LabelInfo info = pack.getInfo();
+		//bookbaseid
+		Integer infoId = pack.getInfoId();
+		String value = info.getValue();
+		if (value == null) {
+			return Message.error(Code.PARAMATER, "不得为空");
+		}
+		info.setCreator(new Integer(id));
+		info.setUserId(new Integer(id));
+		try {
+			labelInfoService.insert(info,infoId);
+		} catch (Exception e) {
+			log.error(JSON.toJSONString(info) + "\n\t" + e.toString());
+			return Message.error(Code.ERROR_CONNECTION, "无法插入数据");
 		}
 		return Message.success("插入成功", Code.SUCCESS);
 	}

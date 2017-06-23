@@ -25,7 +25,7 @@
 		AND t_user_info.user_id = t_user.id
 	</update>
 
-	<insert id="insert" parameterType="com.wtlib.base.pojo.User">
+	<insert id="insert" parameterType="com.wtlib.base.pojo.User" useGeneratedKeys="true" keyProperty="id">
 		insert into t_user
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 

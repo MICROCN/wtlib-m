@@ -109,7 +109,7 @@ public class BookBaseSupportServiceImpl implements BookBaseSupportService{
 	}
 
 	@Override
-	public Integer updateByBookId(BookBaseSupport bookBaseSupportTemp) {
+	public Integer updateByBookBaseId(BookBaseSupport bookBaseSupportTemp) {
 		Integer num= baseSupportMapper.updateByBookId(bookBaseSupportTemp);
 		return num;
 	}

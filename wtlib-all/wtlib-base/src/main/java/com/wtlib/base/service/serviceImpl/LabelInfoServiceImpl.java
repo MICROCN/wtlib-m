@@ -24,17 +24,6 @@ public class LabelInfoServiceImpl implements LabelInfoService {
 	BookBaseLabelInfoService bookBaseLabelInfoService;
 
 	@Override
-	public Integer insert(LabelInfo info) throws Exception {
-		// 将信息写入LabelInfo表
-		Integer id = labelInfoMapper.insert(info);
-		Integer userId = info.getUserId();
-		// 将信息写入关联表LabelInfoUserId
-		BookBaseLabelInfo bookLabel = new BookBaseLabelInfo(id, userId);
-		int num = bookBaseLabelInfoService.insert(bookLabel);
-		return num;
-	}
-
-	@Override
 	public int deleteById(Object id,Object reviser) throws Exception {
 		int labelId = labelInfoMapper.deleteById(id,reviser);
 		bookBaseLabelInfoService.deleteByLabelId(labelId,reviser);
@@ -71,6 +60,23 @@ public class LabelInfoServiceImpl implements LabelInfoService {
 
 	@Override
 	public LabelInfo find(Object str) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer insert(LabelInfo info, Integer infoId) throws Exception {
+		// 将信息写入LabelInfo表
+		Integer id = labelInfoMapper.insert(info);
+		Integer userId = info.getUserId();
+		// 将信息写入关联表LabelInfoUserId
+		BookBaseLabelInfo bookLabel = new BookBaseLabelInfo(id, infoId);
+		int num = bookBaseLabelInfoService.insert(bookLabel);
+		return num;
+	}
+
+	@Override
+	public Integer insert(LabelInfo entity) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
