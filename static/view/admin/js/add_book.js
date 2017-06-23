@@ -39,7 +39,6 @@ file_li.html5upload = (function ()
     {
         if (_checkContatinsElements())return;
         _uploadEle.innerText = _tip_drag_over;
-        _uploadEle.style.border = "none";
     }
 
     /**
@@ -63,7 +62,6 @@ file_li.html5upload = (function ()
 
         if (_checkContatinsElements())return;
         _uploadEle.innerText = "";
-        _uploadEle.style.border = "none";
         $(_uploadEle).css({lineHeight: "1em"});
         $(_uploadEle).append("<ul></ul>");
 
@@ -134,12 +132,12 @@ file_li.html5upload = (function ()
         $(_uploadEle).css({lineHeight: "0px"});
         $(_uploadEle).css({lineHeight: $(_uploadEle).height() + "px"});
         var reader = new FileReader();
-        console.log(file)
-//        console.log(reader);
 
         //判断文件类型
         if (file.type.match(/image*/))
         {
+            _uploadEle.style.border = "none";
+            $("#uploadBox").css("padding","0");
             reader.onload = function (e)
             {
                 var formData = new FormData();
@@ -163,7 +161,8 @@ file_li.html5upload = (function ()
         }
         else
         {
-            console.log("此" + file.name + "不是图片文件！");
+           alert("此" + file.name + "不是图片文件！");
+            file_li.html5upload.init()
         }
     }
 

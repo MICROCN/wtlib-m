@@ -1249,7 +1249,7 @@ blockquote, blockquote.pull-right {
     padding-right: 0;
     min-height: 45px;
     position: relative;
-    background: #438eb9
+    background: #009688;
 }
 
 .navbar > .container {
@@ -1393,7 +1393,7 @@ blockquote, blockquote.pull-right {
 }
 
 .ace-nav > li.light-blue > a {
-    background-color: #62a8d1
+    background-color: #009688
 }
 
 .ace-nav > li.light-blue > a:hover, .ace-nav > li.light-blue > a:focus {
