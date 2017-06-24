@@ -21,6 +21,7 @@ import com.wtlib.base.constants.BorrowStatusEnum;
 import com.wtlib.base.constants.Code;
 import com.wtlib.base.constants.DataStatusEnum;
 import com.wtlib.base.dto.SupportWebDto;
+import com.wtlib.base.dto.TotalInfo;
 import com.wtlib.base.pojo.BookBase;
 import com.wtlib.base.pojo.BookSingle;
 import com.wtlib.base.pojo.BorrowRecord;
@@ -159,15 +160,19 @@ public class BookMainController {
 		}
 	}
 
-	@RequestMapping("/get/support")
-	public Message getBook(@RequestParam("id") Integer id) {
+	/**
+	 * 获取所有的图书信息，包含图书基本信息加support类的可借数量，预约人数
+	 * @return
+	 */
+	@RequestMapping("/get/total/")
+	public Message getTotal() {
 		// 传入的是baseid
-		// 应该传回书籍信息，书籍借阅预约信息和评价信息
+		// 应该传回书籍信息
 		try {
-			SupportWebDto book = BaseSupportService.selectByBaseId(id);
+			TotalInfo book = baseService.selectTotal();
 			return Message.success(Code.SUCCESS, "查找成功", book);
 		} catch (Exception e) {
-			log.error("id:" + id + "\n\t" + e.toString());
+			log.error(e.toString());
 			return Message.error(Code.ERROR_CONNECTION, "找不到书籍！");
 		}
 	}

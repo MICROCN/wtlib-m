@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -9,6 +9,8 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet"/>
     <link rel="stylesheet" href="../css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/ace.min.css"/>
+    <link rel="stylesheet" href="../css/list.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
 </head>
 <body>
 <div class="navbar navbar-default" id="navbar">
@@ -182,15 +184,15 @@
                 <ul class="breadcrumb">
                     <li>
                         <i class="icon-home home-icon"></i>
-                        <a href="#">首页</a>
+                        <a href="#">图书管理</a>
                     </li>
-                    <li class="active">控制台</li>
+                    <li class="active">图书列表</li>
                 </ul><!-- .breadcrumb -->
             </div>
             <div class="page-content">
                 <div class="page-header">
                     <h1>
-                        控制台
+                        图书列表
                         <small>
                             <i class="icon-double-angle-right"></i>
                             查看
@@ -200,55 +202,109 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <div class="alert alert-block alert-success">
-                            <button type="button" class="close" data-dismiss="alert">
-                                <i class="icon-remove"></i>
-                            </button>
-                            <i class="icon-ok green"></i>
-                            欢迎使用图书管理系统
-                        </div>
+
                         <div class="row">
-                            <div class="col-sm-12 infobox-container">
-                                <div class="infobox infobox-green  ">
-                                    <div class="infobox-icon">
-                                        <i class="icon-book"></i>
-                                    </div>
-                                    <div class="infobox-data">
-                                        <span class="infobox-data-number">21</span>
-                                        <div class="infobox-content">图书数目</div>
-                                    </div>
-                                </div>
-                                <div class="infobox infobox-blue  ">
-                                    <div class="infobox-icon">
-                                        <i class="icon-user"></i>
-                                    </div>
-                                    <div class="infobox-data">
-                                        <span class="infobox-data-number">11</span>
-                                        <div class="infobox-content">总人数</div>
-                                    </div>
-                                </div>
-                                <div class="infobox infobox-pink  ">
-                                    <div class="infobox-icon">
-                                        <i class="icon-shopping-cart"></i>
-                                    </div>
-                                    <div class="infobox-data">
-                                        <span class="infobox-data-number">12</span>
-                                        <div class="infobox-content">借书记录</div>
-                                    </div>
-                                </div>
+                            <div class="col-xs-12">
+                                <div class="table-responsive">
+                                    <div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
+                                        <table id="sample-table-2"
+                                               class="table table-striped table-bordered table-hover dataTable"
+                                               aria-describedby="sample-table-2_info">
+                                            <thead>
+                                            <tr>
+                                                <th class="center">
+                                                    <label>
+                                                        <input type="checkbox" class="ace" id="all"/>
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </th>
+                                                <th>书名</th>
+                                                <th>图片</th>
+                                                <th>描述</th>
+                                                <th>作者</th>
+                                                <th>出版社</th>
+                                                <th>价格</th>
+                                                <th>图书数目</th>
+                                                <th>可借数量</th>
+                                                <th>预约人数</th>
+                                                <th>添加人</th>
+                                                <th>添加时间</th>
+                                                <th>修改人</th>
+                                                <th>修改时间</th>
+                                                <th>状态</th>
+                                                <th>
+                                                    <div class="ui-pg-div"><span class="ui-icon icon-search orange"  data-toggle="modal" data-target="#search-model"></span></div>
+                                                    <div class="modal fade" id="search-model" tabindex="-1" role="dialog" >
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="search">
+                                                                        <span class="ui-icon icon-search search-color" ></span>
+                                                                    </button>
+                                                                    <input class="modal-title" type="text" id="form-field-num" placeholder="搜索..." />
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
+                                                    <div class="ui-pg-div"><span class="ui-icon icon-trash red" id="trash"></span></div>
+                                                </th>
+                                            </tr>
+                                            </thead>
 
-                                <div class="infobox infobox-red">
-                                    <div class="infobox-icon">
-                                        <i class="icon-comments"></i>
-                                    </div>
 
-                                    <div class="infobox-data">
-                                        <span class="infobox-data-number">7</span>
-                                        <div class="infobox-content">意见</div>
+                                            <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                            <tr class="odd">
+                                                <td class="center">
+                                                    <label>
+                                                        <input type="checkbox" class="ace" />
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>疯狂java讲义</td>
+                                                <td><img src="../images/book_2/rBEhWVMqvpgIAAAAAA5RfcNEjhYAAKapwFD6goADlGV880.jpg" width="60" height="60"/></td>
+                                                <td>疯狂java讲义</td>
+                                                <td>疯狂java讲义</td>
+                                                <td>疯狂java讲义</td>
+                                                <td>32.4</td>
+                                                <td>4</td>
+                                                <td>4</td>
+                                                <td>0</td>
+                                                <td>admin</td>
+                                                <td>Feb 3</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>
+                                                    <span class="label label-sm label-success">正在使用</span>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="dataTables_info" id="sample-table-2_info">
+                                                    总数：320
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="dataTables_paginate paging_bootstrap">
+                                                    <ul class="pagination">
+                                                        <li class="prev disabled"><a
+                                                                href="file:///G:/ace/ace/tables.html#"><i
+                                                                class="icon-double-angle-left"></i></a></li>
+                                                        <li class="active"><a
+                                                                href="file:///G:/ace/ace/tables.html#">1</a></li>
+                                                        <li><a href="file:///G:/ace/ace/tables.html#">2</a></li>
+                                                        <li><a href="file:///G:/ace/ace/tables.html#">3</a></li>
+                                                        <li class="next"><a href="file:///G:/ace/ace/tables.html#"><i
+                                                                class="icon-double-angle-right"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- /row -->
+                        </div>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.page-content -->
@@ -258,5 +314,7 @@
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/ace.min.js"></script>
+<script src="../js/zoomify.min.js"></script>
+<script src="../js/list.js"></script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.wtlib.base.dto.RecordDto;
 import com.wtlib.base.pojo.BorrowRecord;
 
 /**
@@ -18,5 +19,6 @@ public interface BorrowRecordService extends BaseService<BorrowRecord> {
 
 	List<BorrowRecord> selectAllByUserId(String id,String borrowCode,String dataStatus) throws Exception;
 
+	RecordDto selectAll() throws Exception;
 
 }

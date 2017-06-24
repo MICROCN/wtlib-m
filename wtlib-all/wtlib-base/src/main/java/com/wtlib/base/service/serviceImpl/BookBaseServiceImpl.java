@@ -14,6 +14,7 @@ import com.wtlib.base.constants.DataStatusEnum;
 import com.wtlib.base.dao.BookBaseMapper;
 import com.wtlib.base.dao.BookBaseSupportMapper;
 import com.wtlib.base.dao.BookSingleMapper;
+import com.wtlib.base.dto.TotalInfo;
 import com.wtlib.base.pojo.BookBase;
 import com.wtlib.base.pojo.BookBaseSupport;
 import com.wtlib.base.pojo.BookSingle;
@@ -152,6 +153,12 @@ public class BookBaseServiceImpl implements BookBaseService {
 	@Override
 	public BookBase find(Object str) {
 		return null;
+	}
+
+	@Override
+	public TotalInfo selectTotal() {
+		// TODO Auto-generated method stub
+		return bookBaseMapper.selectTotal();
 	}
 
 }

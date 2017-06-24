@@ -47,14 +47,12 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
 
 	@Override
 	public List<BorrowRecord> selectAll(String dataStatus) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return borrowRecordMapper.selectAll(dataStatus);
 	}
 
 	@Override
 	public int deleteById(Object id,Object reviser) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return borrowRecordMapper.deleteById(id, reviser);
 	}
 
 	@Override

@@ -37,7 +37,7 @@ import com.wtlib.common.utils.IpUtils;
 public class BookMainController {
 
 	@Resource(name = "bookBaseSupportService")
-	BookBaseSupportService BaseSupportService;
+	BookBaseSupportService baseSupportService;
 
 	@Resource(name = "bookBaseService")
 	private BookBaseService baseService;
@@ -117,7 +117,7 @@ public class BookMainController {
 		// 传入的是baseid
 		// 应该传回书籍信息，书籍借阅预约信息和评价信息
 		try {
-			SupportWebDto book = BaseSupportService.selectByBaseId(id);
+			SupportWebDto book = baseSupportService.selectByBaseId(id);
 			return Message.success(Code.SUCCESS, "查找成功", book);
 		} catch (Exception e) {
 			log.error("id:" + id + "\n\t" + e.toString());

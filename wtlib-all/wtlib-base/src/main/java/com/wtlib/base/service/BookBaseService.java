@@ -1,6 +1,8 @@
 package com.wtlib.base.service;
 
 import java.util.List;
+
+import com.wtlib.base.dto.TotalInfo;
 import com.wtlib.base.pojo.BookBase;
 
 /**
@@ -13,5 +15,7 @@ public interface BookBaseService extends BaseService<BookBase> {
 	List<BookBase> find(String title) throws Exception;
 
 	void deleteByBaseId(Integer id,Object reviser) throws Exception;
+
+	TotalInfo selectTotal();
 
 }

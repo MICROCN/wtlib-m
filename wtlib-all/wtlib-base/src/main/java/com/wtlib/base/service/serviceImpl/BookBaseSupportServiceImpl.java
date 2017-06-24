@@ -14,6 +14,7 @@ import com.wtlib.base.dao.BookBaseMapper;
 import com.wtlib.base.dao.BookBaseSupportMapper;
 import com.wtlib.base.dao.LabelInfoMapper;
 import com.wtlib.base.dto.SupportWebDto;
+import com.wtlib.base.dto.TotalInfo;
 import com.wtlib.base.dto.UserWebDto;
 import com.wtlib.base.pojo.BookBase;
 import com.wtlib.base.pojo.BookBaseSupport;

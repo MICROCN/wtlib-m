@@ -30,7 +30,10 @@
   <select id="selectAll" resultMap="BookBaseMap">
   	SELECT * from t_book_base where data_status = #{dataStatus}
   </select>
-  
+    
+  <select id="selectTotal" resultMap="BookBaseMap">
+  	SELECT * from t_book_base where data_status = #{dataStatus}
+  </select>
   <select id="selectById" resultMap="BookBaseMap">
     select 
     <include refid="comList" />

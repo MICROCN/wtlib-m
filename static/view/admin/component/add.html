@@ -7,9 +7,11 @@
     <meta name="description" content="图书管理系统"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/main.css"/>
     <link rel="stylesheet" href="../css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/ace.min.css"/>
-    <link rel="stylesheet" href="../css/book_list.css"/>
+    <link rel="stylesheet" href="../css/add.css"/>
+    <script src="../js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="navbar navbar-default" id="navbar">
@@ -89,20 +91,20 @@
                             </a>
                         </li>
 
-                        <li class="active">
+                        <li>
                             <a href="buttons.html">
                                 <i class="icon-double-angle-right"></i>
                                 图书列表
                             </a>
                         </li>
-                        <li>
+                        <li class="active open">
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-book"></i>
                                 <span class="menu-text"> 图书记录 </span>
                                 <b class="arrow icon-angle-down"></b>
                             </a>
                             <ul class="submenu">
-                                <li>
+                                <li class="active">
                                     <a href="elements.html">
                                         归还借阅预定记录
                                     </a>
@@ -110,6 +112,11 @@
                                 <li>
                                     <a href="buttons.html">
                                         图书损失记录
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="buttons.html">
+                                        图书标签记录
                                     </a>
                                 </li>
                             </ul>
@@ -138,10 +145,27 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="#" class="dropdown-toggle" >
                         <i class="icon-credit-card"></i>
-                        <span class="menu-text"> 信用值权重</span>
+                        <span class="menu-text"> 信用值管理</span>
+                        <b class="arrow icon-angle-down"></b>
                     </a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="elements.html">
+                                <i class="icon-double-angle-right"></i>
+                                信用值设置
+                            </a>
+                        </li>
+                        <li>
+                            <a href="buttons.html">
+                                <i class="icon-double-angle-right"></i>
+                                信用值记录
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                 </li>
                 <li>
                     <a href="#">
@@ -155,7 +179,6 @@
                    data-icon2="icon-double-angle-right"></i>
             </div>
         </div>
-
         <div class="main-content">
             <div class="breadcrumbs" id="breadcrumbs">
                 <ul class="breadcrumb">
@@ -177,112 +200,87 @@
                     </h1>
                 </div><!-- /.page-header -->
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="table-responsive">
-                            <table id="sample-table-2" class="table table-striped table-bordered table-hover">
-                                <thead>
-                                <tr>
-                                    <th class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </th>
-                                    <th>书名</th>
-                                    <th>图片</th>
-                                    <th>描述</th>
-                                    <th>作者</th>
-                                    <th >出版社</th>
-                                    <th>价格</th>
-                                    <th>数目</th>
-                                    <th>添加人</th>
-                                    <th>添加时间</th>
-                                    <th>修改人</th>
-                                    <th>修改时间</th>
-                                    <th>状态</th>
-                                    <th>
-                                        <div class="ui-pg-div"><span class="ui-icon icon-search orange"></span></div>
-                                        <div class="ui-pg-div"><span class="ui-icon icon-trash red"></span></div>
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="center">
-                                        <label>
-                                            <input type="checkbox" class="ace" />
-                                            <span class="lbl"></span>
-                                        </label>
-                                    </td>
-                                    <td>疯狂java讲义</td>
-                                    <td><img src="../images/book_2/rBEhWVMqvpgIAAAAAA5RfcNEjhYAAKapwFD6goADlGV880.jpg" width="60" height="60"/></td>
-                                    <td>疯狂java讲义</td>
-                                    <td>疯狂java讲义</td>
-                                    <td>疯狂java讲义</td>
-                                    <td>32.4</td>
-                                    <td>4</td>
-                                    <td>admin</td>
-                                    <td>Feb 3</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="hidden-480">
-                                        <span class="label label-sm label-success">正在使用</span>
-                                    </td>
-
-                                    <td>
-                                        <div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-                                            <a class="blue" href="#">
-                                                <i class="icon-zoom-in bigger-130"></i>
-                                            </a>
-
-                                            <a class="green" href="#">
-                                                <i class="icon-pencil bigger-130"></i>
-                                            </a>
-
-                                            <a class="red" href="#">
-                                                <i class="icon-trash bigger-130"></i>
-                                            </a>
-                                        </div>
-
-                                        <div class="visible-xs visible-sm hidden-md hidden-lg">
-                                            <div class="inline position-relative">
-                                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-caret-down icon-only bigger-120"></i>
-                                                </button>
-
-                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-                                                    <li>
-                                                        <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-																				<span class="blue">
-																					<i class="icon-zoom-in bigger-120"></i>
-																				</span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																				<span class="green">
-																					<i class="icon-edit bigger-120"></i>
-																				</span>
-                                                        </a>
-                                                    </li>
-
-                                                    <li>
-                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																				<span class="red">
-																					<i class="icon-trash bigger-120"></i>
-																				</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                    <div id="user-profile-3" class="user-profile row">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <form class="form-horizontal">
+                                <div class="tabbable">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div id="uploadBox">
+                                            </div>
+                                            <div id="template" class="hidden">
+                                                <li>
+                                                    <img src=""/>
+                                                    <span class="progress"></span>
+                                                    <span class="percentage"></span>
+                                                </li>
                                             </div>
                                         </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+
+                                        <div class="vspace-xs"></div>
+
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">书名</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-username" placeholder="书名" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">出版社</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-publisher" placeholder="出版社" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">作者</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-writer" placeholder="作者" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">页数</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-page" placeholder="页数" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">图书价格</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-price" placeholder="图书价格" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">书籍数量</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-num" placeholder="书籍数量" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">图书描述</label>
+
+                                                <div class="col-sm-8">
+                                                    <textarea class="col-xs-12 col-sm-10" type="text" rows="7" placeholder="图书描述"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><!-- /span -->
+                    </div><!-- /user-profile -->
                 </div>
             </div><!-- /.page-content -->
         </div><!-- /.main-content -->
@@ -290,6 +288,7 @@
 </div><!-- /.main-container -->
 <script src="../js/jquery-1.10.2.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/add.js"></script>
 <script src="../js/ace.min.js"></script>
 </body>
 </html>
