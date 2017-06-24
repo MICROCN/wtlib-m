@@ -7070,6 +7070,7 @@ th .lbl:only-child, td .lbl:only-child {
 }
 
 .dataTables_info {
+    padding-left:12px;
     font-size: 14px
 }
 

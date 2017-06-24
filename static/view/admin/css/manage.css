@@ -105,3 +105,26 @@
 {
     background-color: #ff6e00;
 }
+.ui-pg-div{
+    display: inline-block;
+}
+td{
+    vertical-align: middle !important;
+    border:0 !important;
+    background-color: #FFFFFF !important;
+}
+.modal-title{
+    width: 91%;
+    font-size: 18px !important;
+    border: 0 !important;
+}
+.search-color{
+    padding-right:10px;
+    color:#009688;
+}
+th{
+    border:0 !important;
+}
+.add,.list{
+    display:none;
+}

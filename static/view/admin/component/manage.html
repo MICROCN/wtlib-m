@@ -7,10 +7,10 @@
     <meta name="description" content="图书管理系统"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="../css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../css/main.css"/>
     <link rel="stylesheet" href="../css/font-awesome.min.css"/>
     <link rel="stylesheet" href="../css/ace.min.css"/>
-    <link rel="stylesheet" href="../css/list.css"/>
-    <link rel="stylesheet" href="../css/main.css"/>
+    <link rel="stylesheet" href="../css/manage.css"/
 </head>
 <body>
 <div class="navbar navbar-default" id="navbar">
@@ -70,52 +70,52 @@
         </a>
         <div class="sidebar" id="sidebar">
             <ul class="nav nav-list">
-                <li>
-                    <a href="index.html">
+                <li id="1000" class="active">
+                    <a href="#">
                         <i class="icon-dashboard"></i>
                         <span class="menu-text"> 控制台 </span>
                     </a>
                 </li>
-                <li class="active open">
+                <li>
                     <a href="#" class="dropdown-toggle">
                         <i class="icon-book"></i>
                         <span class="menu-text"> 图书管理 </span>
                         <b class="arrow icon-angle-down"></b>
                     </a>
                     <ul class="submenu">
-                        <li>
-                            <a href="elements.html">
+                        <li  id="1001">
+                            <a href="#">
                                 <i class="icon-double-angle-right"></i>
-                                添加图书
+                                <span>添加图书</span>
                             </a>
                         </li>
 
-                        <li>
-                            <a href="buttons.html">
+                        <li  id="1002">
+                            <a href="#">
                                 <i class="icon-double-angle-right"></i>
-                                图书列表
+                                <span>图书列表</span>
                             </a>
                         </li>
-                        <li class="active open">
+                        <li>
                             <a href="#" class="dropdown-toggle">
                                 <i class="icon-book"></i>
                                 <span class="menu-text"> 图书记录 </span>
                                 <b class="arrow icon-angle-down"></b>
                             </a>
                             <ul class="submenu">
-                                <li class="active">
-                                    <a href="elements.html">
-                                        归还借阅预定记录
+                                <li id="1003">
+                                    <a href="#">
+                                        <span>归还借阅预定记录</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="buttons.html">
-                                        图书损失记录
+                                <li id="1004">
+                                    <a href="#">
+                                        <span>图书损失记录</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="buttons.html">
-                                        图书标签记录
+                                <li id="1005">
+                                    <a href="#">
+                                        <span>图书标签记录</span>
                                     </a>
                                 </li>
                             </ul>
@@ -129,16 +129,16 @@
                         <b class="arrow icon-angle-down"></b>
                     </a>
                     <ul class="submenu">
-                        <li>
-                            <a href="elements.html">
+                        <li id="1006">
+                            <a href="#">
                                 <i class="icon-double-angle-right"></i>
-                                添加用户
+                                <span>添加用户</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="buttons.html">
+                        <li id="1007">
+                            <a href="#">
                                 <i class="icon-double-angle-right"></i>
-                                用户列表
+                                <span>用户列表</span>
                             </a>
                         </li>
                     </ul>
@@ -150,23 +150,21 @@
                         <b class="arrow icon-angle-down"></b>
                     </a>
                     <ul class="submenu">
-                        <li>
-                            <a href="elements.html">
+                        <li id="1008">
+                            <a href="#">
                                 <i class="icon-double-angle-right"></i>
-                                信用值设置
+                                <span>信用值设置</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="buttons.html">
+                        <li id="1009">
+                            <a href="#">
                                 <i class="icon-double-angle-right"></i>
-                                信用值记录
+                                <span>信用值记录</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li>
-                </li>
-                <li>
+                <li id="1010">
                     <a href="#">
                         <i class="icon-comment"></i>
                         <span class="menu-text"> 意见反馈 </span>
@@ -178,7 +176,6 @@
                    data-icon2="icon-double-angle-right"></i>
             </div>
         </div>
-
         <div class="main-content">
             <div class="breadcrumbs" id="breadcrumbs">
                 <ul class="breadcrumb">
@@ -192,14 +189,153 @@
             <div class="page-content">
                 <div class="page-header">
                     <h1>
-                        图书列表
+                        <span class="list-name">
+                            图书列表
+                        </span>
                         <small>
                             <i class="icon-double-angle-right"></i>
                             查看
                         </small>
                     </h1>
                 </div><!-- /.page-header -->
-                <div class="row">
+                <div class="row controller">
+                    <div class="col-xs-12">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div class="alert alert-block alert-success">
+                            <button type="button" class="close" data-dismiss="alert">
+                                <i class="icon-remove"></i>
+                            </button>
+                            <i class="icon-ok green"></i>
+                            欢迎使用图书管理系统
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 infobox-container">
+                                <div class="infobox infobox-green  ">
+                                    <div class="infobox-icon">
+                                        <i class="icon-book"></i>
+                                    </div>
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number">21</span>
+                                        <div class="infobox-content">图书数目</div>
+                                    </div>
+                                </div>
+                                <div class="infobox infobox-blue  ">
+                                    <div class="infobox-icon">
+                                        <i class="icon-user"></i>
+                                    </div>
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number">11</span>
+                                        <div class="infobox-content">总人数</div>
+                                    </div>
+                                </div>
+                                <div class="infobox infobox-pink  ">
+                                    <div class="infobox-icon">
+                                        <i class="icon-shopping-cart"></i>
+                                    </div>
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number">12</span>
+                                        <div class="infobox-content">借书记录</div>
+                                    </div>
+                                </div>
+
+                                <div class="infobox infobox-red">
+                                    <div class="infobox-icon">
+                                        <i class="icon-comments"></i>
+                                    </div>
+
+                                    <div class="infobox-data">
+                                        <span class="infobox-data-number">7</span>
+                                        <div class="infobox-content">意见</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /row -->
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+                <div class="row add">
+                    <div id="user-profile-3" class="user-profile row">
+                        <div class="col-sm-offset-1 col-sm-10">
+                            <form class="form-horizontal">
+                                <div class="tabbable">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-4">
+                                            <div id="uploadBox">
+                                            </div>
+                                            <div id="template" class="hidden">
+                                                <li>
+                                                    <img src=""/>
+                                                    <span class="progress"></span>
+                                                    <span class="percentage"></span>
+                                                </li>
+                                            </div>
+                                        </div>
+
+                                        <div class="vspace-xs"></div>
+
+                                        <div class="col-xs-12 col-sm-8">
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">书名</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-username" placeholder="书名" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">出版社</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-publisher" placeholder="出版社" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">作者</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-writer" placeholder="作者" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">页数</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-page" placeholder="页数" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">图书价格</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-price" placeholder="图书价格" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">书籍数量</label>
+
+                                                <div class="col-sm-8">
+                                                    <input class="col-xs-12 col-sm-10" type="text" id="form-field-num" placeholder="书籍数量" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-sm-4 control-label no-padding-right" for="form-field-username">图书描述</label>
+
+                                                <div class="col-sm-8">
+                                                    <textarea class="col-xs-12 col-sm-10" type="text" rows="7" placeholder="图书描述"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div><!-- /span -->
+                    </div><!-- /user-profile -->
+                </div>
+                <div class="row list">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
 
@@ -241,7 +377,7 @@
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="search">
                                                                         <span class="ui-icon icon-search search-color" ></span>
                                                                     </button>
-                                                                    <input class="modal-title" type="text" id="form-field-num" placeholder="搜索..." />
+                                                                    <input class="modal-title" type="text" placeholder="搜索..." />
                                                                 </div>
                                                             </div><!-- /.modal-content -->
                                                         </div><!-- /.modal-dialog -->
@@ -312,9 +448,9 @@
     </div><!-- /.main-container-inner -->
 </div><!-- /.main-container -->
 <script src="../js/jquery-1.10.2.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<script src="../js/manage.js"></script>
 <script src="../js/ace.min.js"></script>
 <script src="../js/zoomify.min.js"></script>
-<script src="../js/list.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

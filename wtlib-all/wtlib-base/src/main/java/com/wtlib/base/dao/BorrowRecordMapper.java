@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.wtlib.base.dto.RecordDto;
 import com.wtlib.base.pojo.BorrowRecord;
 
 /**
@@ -17,5 +18,7 @@ public interface BorrowRecordMapper extends BaseDao<BorrowRecord> {
 	BorrowRecord selectBySingleId(@Param("singleId")Integer singleId,@Param("dataStatus") String dataStatus);
 
 	List<BorrowRecord> selectAllByUserId(@Param("id")Object id, String code,@Param("dataStatus") String dataStatus);
+
+	RecordDto selectRecord();
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.wtlib.base.constants.DataStatusEnum;
 import com.wtlib.base.dao.BorrowRecordMapper;
+import com.wtlib.base.dto.RecordDto;
 import com.wtlib.base.pojo.BorrowRecord;
 import com.wtlib.base.service.BorrowRecordService;
 
@@ -71,6 +72,11 @@ public class BorrowRecordServiceImpl implements BorrowRecordService {
 	public BorrowRecord selectBySingleId(Integer singleId) {
 		BorrowRecord record = borrowRecordMapper.selectBySingleId(singleId,DataStatusEnum.NORMAL_USED.getCode());
 		return record;
+	}
+
+	@Override
+	public RecordDto selectAll() throws Exception {
+		return borrowRecordMapper.selectRecord();
 	}
 
 }

@@ -38,7 +38,7 @@ import com.wtlib.common.utils.IpUtils;
 public class BookMainController {
 
 	@Resource(name = "bookBaseSupportService")
-	BookBaseSupportService BaseSupportService;
+	BookBaseSupportService baseSupportService;
 
 	@Resource(name = "bookBaseService")
 	private BookBaseService baseService;

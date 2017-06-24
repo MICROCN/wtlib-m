@@ -34,6 +34,18 @@
     
   </delete>
  
+   <select id="selectRecord" resultMap="">
+ 	SELECT
+	t_borrow_record.*, t_book_base.book_title
+FROM
+	t_borrow_record,
+	t_book_base,
+	t_book_single
+WHERE
+	t_borrow_record.book_single_id = t_book_single.id
+	and t_book_single.book_base_id = t_book_base.id;
+  </select>
+ 
   <insert id="insert" parameterType="com.wtlib.base.pojo.BorrowRecord" >
     insert into t_borrow_record
     <trim prefix="(" suffix=")" suffixOverrides="," >
