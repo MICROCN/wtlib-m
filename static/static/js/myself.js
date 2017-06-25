@@ -19,7 +19,6 @@ $("#turn-back").click(function(){
     $(".return-back").css('display','block');
     $(".container").css('display','none');
     $(".icon-back").css("display","block");
-    $(".history").css('display',"none");
 })
 $("#reservation").click(function(){
     $(".user-head").html("我的预约")
