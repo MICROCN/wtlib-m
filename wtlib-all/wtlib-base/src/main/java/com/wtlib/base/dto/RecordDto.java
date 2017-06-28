@@ -6,9 +6,21 @@ import com.wtlib.base.pojo.BorrowRecord;
 
 public class RecordDto {
 	
+	Integer id;
+	
 	List<BorrowRecord> list;
 	
 	String bookTitle;
+
+	
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public List<BorrowRecord> getList() {
 		return list;
@@ -28,7 +40,8 @@ public class RecordDto {
 
 	@Override
 	public String toString() {
-		return "RecordDto [list=" + list + ", bookTitle=" + bookTitle + "]";
+		return "RecordDto [id=" + id + ", list=" + list + ", bookTitle="
+				+ bookTitle + "]";
 	}
 	
 	

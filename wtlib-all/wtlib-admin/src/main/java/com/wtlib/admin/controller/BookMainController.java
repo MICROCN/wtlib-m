@@ -21,7 +21,7 @@ import com.wtlib.base.constants.BorrowStatusEnum;
 import com.wtlib.base.constants.Code;
 import com.wtlib.base.constants.DataStatusEnum;
 import com.wtlib.base.dto.SupportWebDto;
-import com.wtlib.base.dto.TotalInfo;
+import com.wtlib.base.dto.TotalInfoDto;
 import com.wtlib.base.pojo.BookBase;
 import com.wtlib.base.pojo.BookSingle;
 import com.wtlib.base.pojo.BorrowRecord;
@@ -169,7 +169,7 @@ public class BookMainController {
 		// 传入的是baseid
 		// 应该传回书籍信息
 		try {
-			TotalInfo book = baseService.selectTotal();
+			TotalInfoDto book = baseService.selectTotal();
 			return Message.success(Code.SUCCESS, "查找成功", book);
 		} catch (Exception e) {
 			log.error(e.toString());

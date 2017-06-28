@@ -17,21 +17,9 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="data_status" property="dataStatus" jdbcType="CHAR" />
   </resultMap>
-  <resultMap id="TotalInfoMap" type="com.wtlib.base.dto.TotalInfo" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="book_title" property="bookTitle" jdbcType="VARCHAR" />
-    <result column="book_cover_url" property="bookCoverUrl" jdbcType="VARCHAR" />
-    <result column="book_desc" property="bookDesc" jdbcType="VARCHAR" />
-    <result column="book_writer" property="bookWriter" jdbcType="VARCHAR" />
-    <result column="book_publisher" property="bookPublisher" jdbcType="VARCHAR" />
-    <result column="book_page_num" property="bookPageNum" jdbcType="INTEGER" />
-    <result column="book_price" property="bookPrice" jdbcType="DECIMAL" />
-    <result column="creator" property="creator" jdbcType="INTEGER" />
-    <result column="book_num" property="bookNum" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="reviser" property="reviser" jdbcType="INTEGER" />
-    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="data_status" property="dataStatus" jdbcType="CHAR" />
+  <resultMap id="TotalInfoMap" type="com.wtlib.base.dto.TotalInfoDto" >
+	<association property="book" resultMap="BookBaseMap"/>
+	<association property="support" resultMap="com.wtlib.dao.BookBaseSupportMapper.BaseBookSupportMap"/>
   </resultMap>
   <sql id="comList" >
     id, book_title, book_cover_url, book_desc, book_writer, book_publisher, book_page_num, 

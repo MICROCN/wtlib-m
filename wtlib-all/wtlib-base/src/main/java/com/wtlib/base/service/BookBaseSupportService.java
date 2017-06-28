@@ -1,7 +1,7 @@
 package com.wtlib.base.service;
 
 import com.wtlib.base.dto.SupportWebDto;
-import com.wtlib.base.dto.TotalInfo;
+import com.wtlib.base.dto.TotalInfoDto;
 import com.wtlib.base.pojo.BookBaseSupport;
 
 public interface BookBaseSupportService extends BaseService<BookBaseSupport> {
