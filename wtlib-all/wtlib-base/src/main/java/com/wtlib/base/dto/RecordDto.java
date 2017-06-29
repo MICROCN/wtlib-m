@@ -6,6 +6,8 @@ import com.wtlib.base.pojo.BorrowRecord;
 
 public class RecordDto {
 	
+	//TODO 这个接口有问题
+	
 	Integer id;
 	
 	List<BorrowRecord> list;

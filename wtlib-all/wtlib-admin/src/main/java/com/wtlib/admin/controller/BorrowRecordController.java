@@ -34,7 +34,7 @@ public class BorrowRecordController {
 			return Message.success("查找成功",dto);
 		} catch (Exception e) {
 			log.error(e.toString());
-			return Message.error(Code.ERROR_CONNECTION, "无法删除数据");
+			return Message.error(Code.ERROR_CONNECTION, "无法查看数据");
 		}
 	}
 	
