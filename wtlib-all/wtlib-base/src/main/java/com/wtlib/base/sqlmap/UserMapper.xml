@@ -145,7 +145,7 @@
 		t_user_level.id and  t_user.data_status = #{dataStatus} and  t_user_info.data_status = #{dataStatus} and  t_user_level.data_status = #{dataStatus};
 	</select>
 
-	<select id="confirm" parameterType="com.wtlib.base.pojo.User">
+	<select id="confirm" parameterType="com.wtlib.base.pojo.User" resultType="java.lang.Integer">
 		SELECT id FROM t_user WHERE
 		login_id = #{user.loginId} AND password = #{user.password} and data_status = #{dataStatus}
 	</select>

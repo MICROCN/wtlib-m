@@ -1,5 +1,6 @@
 package com.wtlib.base.service.serviceImpl;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	@Resource(name ="userInfoService")
 	UserInfoService userInfoService;
 	@Autowired
-    protected JedisPool jedisPool;
+    JedisPool jedisPool;
 	
 	public int update(User user)  throws Exception{
 		int num = userMapper.update(user);
@@ -81,12 +82,15 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(password);
 		Integer id= userMapper.confirm(user,DataStatusEnum.NORMAL_USED.getCode());
         //id如果存在则放入jedis中
+		String key = "0";
 		if(id!=null){
 			Jedis jedis = jedisPool.getResource();
-	        jedis.set("userId", id.toString());
+			//这里就算我的私心吧，用生日做key
+			key = id+""+new Date()+"19970204";
+	        jedis.set(key, id.toString());
 	        jedisPool.returnResource(jedis);	
 		}
-		return id;
+		return Integer.parseInt(key);
 	}
 
 	@Override

@@ -57,13 +57,12 @@ public class UserCenterController {
 			return Message.error(Code.PARAMATER, "昵称不能包含空格、制表符、换页符等空白字符");
 		}
 		try {
-			Integer id = userService.confirm(user);
-			if (id != null) {
-				session.setAttribute("user", id);// 这里不安全。肯定要改。要么用https要么就加密
-				session.setMaxInactiveInterval(60 * 30);
+			Integer key = userService.confirm(user);
+			//只要不是0就代表查找到了一个用户
+			if (key != 0) {
 				log.info(JSON.toJSONString(user) + "登陆了\n\t ip:"
 						+ IpUtils.getIp(request));
-				return Message.success("登陆成功！");
+				return Message.success("登陆成功！",key);
 			} else
 				return Message.error(Code.PARAMATER, "账号或密码错误");
 		} catch (Exception e) {

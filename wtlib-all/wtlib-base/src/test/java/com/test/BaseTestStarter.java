@@ -14,7 +14,7 @@ import org.unitils.spring.annotation.SpringBean;
 
 
 @SpringApplicationContext({ "test-spring.xml", "test-spring-mybatis.xml",
-		"test-spring-aop.xml", "test-spring-mvc.xml" })
+		"test-spring-aop.xml", "test-spring-mvc.xml" ,"test-spring-redis.xml" })
 public class BaseTestStarter extends UnitilsJUnit4 {
 	public static final Log logger = LogFactory.getLog(BaseTestStarter.class);
 
