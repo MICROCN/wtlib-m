@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.dao.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.wtlib.pojo.UserInfo" >
+<mapper namespace="com.wtlib.base.dao.UserInfoMapper">
+  <resultMap id="UserInfoMap" type="com.wtlib.base.pojo.UserInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
@@ -38,7 +38,7 @@
 		select *  from t_user_info where user_id = #{id} and data_status = #{dataStatus}
 	</select>
 
-	 <insert id="insert" parameterType="com.wtlib.pojo.UserInfo" >
+	 <insert id="insert" parameterType="com.wtlib.base.pojo.UserInfo" >
     insert into t_user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -125,7 +125,7 @@
       	now()
     </trim>
   </insert>
-<update id="update" parameterType="com.wtlib.pojo.UserInfo" >
+<update id="update" parameterType="com.wtlib.base.pojo.UserInfo" >
     update t_user_info
     <set >
       <if test="userId != null" >

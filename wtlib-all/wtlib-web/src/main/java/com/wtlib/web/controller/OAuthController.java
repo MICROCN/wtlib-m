@@ -19,7 +19,7 @@ import com.wtlib.wechat.utils.AdvancedUtil;
  * @author pohoulong
  * 
  */
-public class OAuthServlet extends HttpServlet {
+public class OAuthController extends HttpServlet {
 	
 	// 用户同意授权后，能获取到code
 	@RequestMapping("/confirm/OAuth")

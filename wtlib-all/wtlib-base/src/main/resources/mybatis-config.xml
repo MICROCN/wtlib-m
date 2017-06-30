@@ -20,6 +20,6 @@
 	<mappers>
 		<!-- 放置配置文件 -->
 		<mapper resource="mapper-global.xml" />
-		<package name="com.wtlib.shop.dao" />
+		<package name="com.wtlib.base.dao" />
 	</mappers>
 </configuration>

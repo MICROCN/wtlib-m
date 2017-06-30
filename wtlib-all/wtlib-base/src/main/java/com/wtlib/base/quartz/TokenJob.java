@@ -15,12 +15,10 @@ public class TokenJob {
 	public static AccessToken accessToken = null;
 	
 	public void work() throws Exception {
-		while (true) {
-			accessToken = WeChatUtil.getAccessToken(appid, appsecret);
-			if (null != accessToken) {
-				log.info("获取access_token成功，有效时长{}秒 token:{}",
-						accessToken.getExpiresIn(), accessToken.getToken());
-			}
+		accessToken = WeChatUtil.getAccessToken(appid, appsecret);
+		if (null != accessToken) {
+			log.info("获取access_token成功，有效时长{}秒 token:{}",
+					accessToken.getExpiresIn(), accessToken.getToken());
 		}
 	}
 }

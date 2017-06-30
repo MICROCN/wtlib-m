@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.dao.LabelInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.wtlib.base.pojo.LabelInfo" >
+<mapper namespace="com.wtlib.base.dao.LabelInfoMapper" >
+  <resultMap id="LabelInfoMap" type="com.wtlib.base.pojo.LabelInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="value" property="value" jdbcType="VARCHAR" />
@@ -14,7 +14,7 @@
   <sql id="Base_Column_List" >
     id, user_id, value, creator, create_time, reviser, update_time, data_status
   </sql>
-  <select id="selectByBaseId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByBaseId" resultMap="LabelInfoMap" parameterType="java.lang.Integer" >
 	SELECT
 		t_label_info.*
 	FROM

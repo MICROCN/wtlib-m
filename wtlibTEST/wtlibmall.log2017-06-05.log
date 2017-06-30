@@ -1,0 +1,14 @@
+15:21:21,175 -- INFO -- org.unitils.database.config.PropertiesDataSourceFactory.createDataSource(PropertiesDataSourceFactory.java:70) -- Creating data source. Driver: com.mysql.jdbc.Driver, url: jdbc:mysql://115.159.91.75:3306/wtlib?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8, user: root, password: <not shown>
+ 15:21:21,540 -- INFO -- org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:513) -- Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7107ed45: startup date [Mon Jun 05 15:21:21 CST 2017]; root of context hierarchy
+ 15:21:21,626 -- INFO -- org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316) -- Loading XML bean definitions from class path resource [test-spring.xml]
+ 15:21:22,175 -- INFO -- org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316) -- Loading XML bean definitions from class path resource [test-spring-mybatis.xml]
+ 15:21:22,365 -- INFO -- org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316) -- Loading XML bean definitions from class path resource [test-spring-aop.xml]
+ 15:21:22,479 -- INFO -- org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:316) -- Loading XML bean definitions from class path resource [test-spring-mvc.xml]
+ 15:21:23,059 -- INFO -- org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172) -- Loading properties file from class path resource [init_test.properties]
+ 15:21:23,068 -- INFO -- org.springframework.core.io.support.PropertiesLoaderSupport.loadProperties(PropertiesLoaderSupport.java:172) -- Loading properties file from class path resource [log4j.properties]
+ 15:21:24,770 -- INFO -- com.alibaba.druid.pool.DruidDataSource.init(DruidDataSource.java:450) -- {dataSource-1} inited
+ 15:21:26,880 -- INFO -- com.test.BaseTestStarter.testServiceStart(BaseTestStarter.java:33) -- 
+
+--------------------------------- << SPRING-TEST START >> ---------------------------------
+
+ 

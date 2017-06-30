@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.dao.FeedBackMapper">
+<mapper namespace="com.wtlib.base.dao.FeedBackMapper">
 	<resultMap id="FeedBackMap" type="com.wtlib.base.pojo.FeedBack">
 		<id column="id" property="id" jdbcType="INTEGER" />
 		<result column="user_id" property="userId" jdbcType="INTEGER" />
@@ -16,7 +16,7 @@
 		update_time,
 		data_status
 	</sql>
-	<select id="selectAllByUserId" resultMap="CreditInfoMap">
+	<select id="selectAllByUserId" resultMap="FeedBackMap">
 	    select * from t_credit_info
 	    where data_status = #{dataStatus} and user_id = #{userId}
   	</select>

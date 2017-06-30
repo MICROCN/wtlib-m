@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+
 import com.wtlib.base.constants.DataStatusEnum;
 import com.wtlib.base.dao.UserInfoMapper;
 import com.wtlib.base.dao.UserMapper;
@@ -16,6 +19,7 @@ import com.wtlib.base.pojo.User;
 import com.wtlib.base.pojo.UserInfo;
 import com.wtlib.base.service.UserInfoService;
 import com.wtlib.base.service.UserService;
+import com.wtlib.common.utils.MD5;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -23,6 +27,9 @@ public class UserServiceImpl implements UserService {
 	UserMapper userMapper;
 	@Resource(name ="userInfoService")
 	UserInfoService userInfoService;
+	@Autowired
+    protected JedisPool jedisPool;
+	
 	public int update(User user)  throws Exception{
 		int num = userMapper.update(user);
 		return num;
@@ -59,13 +66,26 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public Integer confirmAdmin(User user) {
+		String password = user.getPassword();
+		password = MD5.encode(password);
+		user.setPassword(password);
 		Integer id= userMapper.confirmAdmin(user,DataStatusEnum.NORMAL_USED.getCode());
 		return id;
 	}
 	
 	@Override
 	public Integer confirm(User user) {
+		//加密判断
+		String password = user.getPassword();
+		password = MD5.encode(password);
+		user.setPassword(password);
 		Integer id= userMapper.confirm(user,DataStatusEnum.NORMAL_USED.getCode());
+        //id如果存在则放入jedis中
+		if(id!=null){
+			Jedis jedis = jedisPool.getResource();
+	        jedis.set("userId", id.toString());
+	        jedisPool.returnResource(jedis);	
+		}
 		return id;
 	}
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wtlib.dao.BookBaseMapper" >
+<mapper namespace="com.wtlib.base.dao.BookBaseMapper" >
   <resultMap id="BookBaseMap" type="com.wtlib.base.pojo.BookBase" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="book_title" property="bookTitle" jdbcType="VARCHAR" />
@@ -31,7 +31,7 @@
   	select * from t_book_base WHERE book_title like "%#{title}%" and data_status = #{dataStatus} 
   </select>
   
-  <select id="selectAll" resultMap="BookBaseMap">
+  <select id="selectAll"  parameterType="java.lang.String" resultMap="BookBaseMap">
   	SELECT * from t_book_base where data_status = #{dataStatus}
   </select>
     
