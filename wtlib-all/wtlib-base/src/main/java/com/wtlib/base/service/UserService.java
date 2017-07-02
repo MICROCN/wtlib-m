@@ -18,7 +18,7 @@ public interface UserService extends BaseService<User> {
 
 	public UserWebDto find(String user,String dataStatus) throws Exception;
 	
-	public Integer confirm(User user) throws Exception;
+	public Long confirm(User user) throws Exception;
 
 	public UserWebDto selectAllById(Integer userid,String dataStatus);
 

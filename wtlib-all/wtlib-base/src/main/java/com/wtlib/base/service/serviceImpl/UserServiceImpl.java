@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public Integer confirm(User user) {
+	public Long confirm(User user) {
 		//加密判断
 		String password = user.getPassword();
 		password = MD5.encode(password);
@@ -85,12 +85,11 @@ public class UserServiceImpl implements UserService {
 		String key = "0";
 		if(id!=null){
 			Jedis jedis = jedisPool.getResource();
-			//这里就算我的私心吧，用生日做key
-			key = id+""+new Date()+"19970204";
+			key = id+""+new Date().getTime();
 	        jedis.set(key, id.toString());
 	        jedisPool.returnResource(jedis);	
 		}
-		return Integer.parseInt(key);
+		return Long.parseLong(key);
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package com.test.service;
 
+import java.util.Date;
+
 import org.junit.Test;
 import org.unitils.spring.annotation.SpringBean;
 
@@ -24,4 +26,6 @@ public class UserInfoServiceTest extends BaseTestStarter{
 			e.printStackTrace();
 		}
 	}
+	
+
 }

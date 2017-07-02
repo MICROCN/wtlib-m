@@ -10,6 +10,8 @@ import org.unitils.spring.annotation.SpringBean;
 import com.alibaba.fastjson.JSON;
 import com.wtlib.base.pojo.User;
 import com.wtlib.base.service.UserService;
+import com.test.BaseTestStarter;
+
 public class MainTest extends BaseTestStarter {
 
 	@SpringBean(value = "userService")

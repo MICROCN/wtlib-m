@@ -26,7 +26,6 @@ import  com.wtlib.base.service.FeedBackService;
  * @date 2017年1月22日 下午2:45:10
  */
 @Controller
-@RequestMapping("user")
 public class FeedBackController {
 	@Autowired
 	private FeedBackService feedBackService;

@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,7 @@ import com.wtlib.wechat.utils.AdvancedUtil;
  * @author pohoulong
  * 
  */
+@Controller
 public class OAuthController extends HttpServlet {
 	
 	// 用户同意授权后，能获取到code

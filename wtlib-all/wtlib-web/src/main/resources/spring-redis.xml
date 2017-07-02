@@ -7,28 +7,30 @@
     <context:component-scan base-package="com.wtlib.base.service.serviceImpl">
     </context:component-scan>
 
-   <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="usePool" value="true"></property>
-        <property name="hostName" value="${redis.host}" />
-        <property name="port" value="${redis.port}" />
-        <property name="password" value="${redis.pass}" />
-        <property name="timeout" value="${redis.timeout}" />
-        <property name="database" value="${redis.default.db}"></property>
-        <constructor-arg index="0" ref="jedisPoolConfig" />
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <!--最大连接数-->
+        <property name="maxTotal" value="${redis.pool.maxActive}" />
+        <!--最大空闲连接数-->
+        <property name="maxIdle" value="${redis.pool.maxIdle}" />
+        <!--初始化连接数-->
+        <property name="minIdle" value="${redis.pool.minIdle}"/>
+        <!--最大等待时间-->
+        <property name="maxWaitMillis" value="${redis.pool.maxWait}" />
+        <!--对拿到的connection进行validateObject校验-->
+        <property name="testOnBorrow" value="${redis.pool.testOnBorrow}" />
+        <!--在进行returnObject对返回的connection进行validateObject校验-->
+        <property name="testOnReturn" value="${redis.pool.testOnReturn}" />
+        <!--定时对线程池中空闲的链接进行validateObject校验-->
+        <property name="testWhileIdle" value="true" />
     </bean>
-
-    <!-- jedis pool配置 -->
-    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-        <property name="maxTotal" value="${redis.maxActive}" />
-        <property name="maxIdle" value="${redis.maxIdle}" />
-        <property name="maxWaitMillis" value="${redis.maxWait}" />
-        <!--
-        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
-        -->
-    </bean>
-
-    <!-- Redis Template -->
-    <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
-        <property name="connectionFactory" ref="jedisConnectionFactory" />
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy" >
+        <constructor-arg index="0">
+            <bean factory-bean="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig"/>
+        </constructor-arg>
+        <constructor-arg index="1" value="${redis.host}"/>
+        <constructor-arg index="2" value="${redis.port}"/>
+        <!--timeout-->
+        <constructor-arg index="3" value="${redis.timeout}"/>
+        <constructor-arg index="4" value="${redis.password}"/>
     </bean>
 </beans>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +26,7 @@ import com.wtlib.base.service.UserLevelService;
 import com.wtlib.base.service.UserService;
 import com.wtlib.common.utils.IpUtils;
 
-@RequestMapping("/user")
+@Controller
 public class UserCenterController {
 
 	@Resource(name = "userService")
@@ -39,7 +40,8 @@ public class UserCenterController {
 
 	// login
 	@RequestMapping("/login")
-	public Message login(@RequestBody User user,HttpSession session,HttpServletRequest request) {
+	@ResponseBody
+	public Message login(@RequestBody User user,HttpServletRequest request) {
 		String password = user.getPassword();
 		String loginId = user.getLoginId();
 		// 其他的null都提示的是不得为空，只有这里会记录ip的原因是防止入侵。
@@ -48,7 +50,7 @@ public class UserCenterController {
 			String ip = IpUtils.getIp(request);
 			log.error("ip:" + JSON.toJSON(ip) + "\n\t username:"
 					+ user.getLoginId());
-			return Message.error(Code.FATAL_ERROR, "别搞事情", ip);
+			return Message.error(Code.FATAL_ERROR, "别搞事情！！！", ip);
 		}
 		if (password.matches("^.*[\\s]+.*$")) {
 			return Message.error(Code.PARAMATER, "密码不能包含空格、制表符、换页符等空白字符");
@@ -57,7 +59,7 @@ public class UserCenterController {
 			return Message.error(Code.PARAMATER, "昵称不能包含空格、制表符、换页符等空白字符");
 		}
 		try {
-			Integer key = userService.confirm(user);
+			Long key = userService.confirm(user);
 			//只要不是0就代表查找到了一个用户
 			if (key != 0) {
 				log.info(JSON.toJSONString(user) + "登陆了\n\t ip:"

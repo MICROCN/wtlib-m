@@ -33,7 +33,6 @@ import com.wtlib.base.service.serviceImpl.BookReservationServiceImpl;
 import com.wtlib.common.utils.IpUtils;
 
 @Controller
-@RequestMapping("/user")
 public class BookMainController {
 
 	@Resource(name = "bookBaseSupportService")
